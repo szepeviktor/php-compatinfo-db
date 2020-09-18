@@ -6,7 +6,7 @@
 Main goal of this project is to provide a standalone database (SQLite3) that references
 all functions, constants, classes, interfaces on PHP standard distribution and about 100 extensions.
 
-This database is currently only supported by its initial project [php-compatinfo](https://github.com/llaville/php-compat-info) on versions 5.x-dev
+This database is currently only supported by its initial project [php-compatinfo](https://github.com/llaville/php-compat-info)
 
 ## Features
 
@@ -23,7 +23,7 @@ More than 100 extensions (PHP standard distribution, but also PECL) are currentl
 * reference all ini entries
 * reference all releases
 
-Version 2.18.0 supports following PHP versions :
+Version 3.0.0 supports following PHP versions :
 
 * PHP 5.2.17
 * PHP 5.3.29
@@ -35,10 +35,11 @@ Version 2.18.0 supports following PHP versions :
 * PHP 7.2.33
 * PHP 7.3.22
 * PHP 7.4.10
+* PHP 8.0.0
 
 Currently, 108 extensions referenced in the database.
 
-For future versions, see the `CHANGELOG` file.
+For future versions, see the `CHANGELOG-3.x.md` file.
 
 ## Examples
 
@@ -46,8 +47,8 @@ See `examples/useExtensionFactory.php` script to learn how to access to informat
 
 ## Requirements
 
-* PHP 7.1 or greater
-* PHPUnit 7 or greater (if you want to run unit tests)
+* PHP 7.2 or greater
+* PHPUnit 8 or greater (if you want to run unit tests)
 
 ## Installation
 
