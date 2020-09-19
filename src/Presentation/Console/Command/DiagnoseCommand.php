@@ -14,7 +14,7 @@ use Laminas\Diagnostics\Result\SuccessInterface;
 /**
  * Checks the minimum requirements on current platform for the phar distribution
  */
-class DiagnoseCommand extends AbstractCommand
+class DiagnoseCommand extends AbstractCommand implements CommandInterface
 {
     public const NAME = 'bartlett:diagnose';
 

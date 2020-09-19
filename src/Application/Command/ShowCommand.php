@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bartlett\CompatInfoDb\Application\Command;
 
-class ShowCommand
+class ShowCommand implements CommandInterface
 {
     private $extension;
     private $releases;

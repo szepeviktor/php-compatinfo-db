@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace Bartlett\CompatInfoDb\Application\Command;
 
-class ReleaseCommand
+class ReleaseCommand implements CommandInterface
 {
 }

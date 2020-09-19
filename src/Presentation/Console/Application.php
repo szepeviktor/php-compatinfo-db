@@ -1,44 +1,28 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Bartlett\CompatInfoDb\Presentation\Console;
 
 use Bartlett\CompatInfoDb\DatabaseFactory;
-use Bartlett\CompatInfoDb\Presentation\Console\Command\BuildExtensionCommand;
-use Bartlett\CompatInfoDb\Presentation\Console\Command\DiagnoseCommand;
-use Bartlett\CompatInfoDb\Presentation\Console\Command\InitCommand;
-use Bartlett\CompatInfoDb\Presentation\Console\Command\ListCommand;
-use Bartlett\CompatInfoDb\Presentation\Console\Command\PublishCommand;
-use Bartlett\CompatInfoDb\Presentation\Console\Command\ReleaseCommand;
-use Bartlett\CompatInfoDb\Presentation\Console\Command\ShowCommand;
 
 use PackageVersions\Versions;
 
-use Psr\Container\ContainerInterface;
-
-use Symfony\Component\Console\CommandLoader\CommandLoaderInterface;
-use Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Application as SymfonyApplication;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 use PDO;
 
 /**
  * Symfony Console Application to handle the SQLite compatinfo database.
  */
-class Application extends \Symfony\Component\Console\Application
+class Application extends SymfonyApplication implements ApplicationInterface
 {
-    public const NAME = 'Database handler for CompatInfo';
-    public const VERSION = '2.x-dev';
-
     /** @var string */
     private $baseDir;
 
     /** @var ContainerInterface  */
     private $container;
 
-    public function __construct(ContainerInterface $container, string $version = 'UNKNOWN')
+    public function __construct(string $version = 'UNKNOWN')
     {
         if ('UNKNOWN' === $version) {
             // composer or git outside world strategy
@@ -56,9 +40,15 @@ class Application extends \Symfony\Component\Console\Application
         }
         parent::__construct(self::NAME, $version);
 
-        $this->container = $container;
-        $this->setCommandLoader($this->createCommandLoader($container));
         $this->baseDir = dirname(__DIR__, 3);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
     }
 
     public function getDbFilename() : string
@@ -103,31 +93,4 @@ class Application extends \Symfony\Component\Console\Application
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function doRun(InputInterface $input, OutputInterface $output)
-    {
-        $this->container->set(InputInterface::class, $input);
-        $this->container->set(OutputInterface::class, $output);
-
-        return parent::doRun($input, $output);
-    }
-    /**
-     * @param ContainerInterface $container
-     * @return CommandLoaderInterface
-     * @see https://symfony.com/doc/current/console/lazy_commands.html#containercommandloader
-     */
-    private function createCommandLoader(ContainerInterface $container): CommandLoaderInterface
-    {
-        return new ContainerCommandLoader(
-            $container,
-            [
-                BuildExtensionCommand::NAME => BuildExtensionCommand::class,
-                DiagnoseCommand::NAME => DiagnoseCommand::class,
-                InitCommand::NAME => InitCommand::class,
-                ListCommand::NAME => ListCommand::class,
-                PublishCommand::NAME => PublishCommand::class,
-                ReleaseCommand::NAME => ReleaseCommand::class,
-                ShowCommand::NAME => ShowCommand::class,
-            ]
-        );
-    }
 }

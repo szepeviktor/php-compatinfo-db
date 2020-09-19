@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace Bartlett\CompatInfoDb\Presentation\Console\Command;
 
-use League\Tactician\CommandBus;
+use Bartlett\CompatInfoDb\Application\Command\CommandBusInterface;
+
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Table;
 
 class AbstractCommand extends Command
 {
-    /** @var CommandBus */
+    /** @var CommandBusInterface */
     protected $commandBus;
 
-    public function __construct(CommandBus $commandBus)
+    public function __construct(CommandBusInterface $commandBus)
     {
         parent::__construct();
         $this->commandBus = $commandBus;

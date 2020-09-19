@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bartlett\CompatInfoDb\Application\Command;
 
-class InitCommand
+class InitCommand implements CommandInterface
 {
     public $extension;
     public $refDir;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bartlett\CompatInfoDb\Presentation\Console\Command;
 
 use Bartlett\CompatInfoDb\Application\Command\InitCommand as AppInitCommand;
+
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -12,7 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Initiliaze the database with JSON files for one or all extensions.
  */
-class InitCommand extends AbstractCommand
+class InitCommand extends AbstractCommand implements CommandInterface
 {
     public const NAME = 'bartlett:db:init';
 

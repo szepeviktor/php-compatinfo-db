@@ -12,7 +12,7 @@ use Symfony\Component\Console\Helper\TableSeparator;
 /**
  * List all references supported by the Database.
  */
-class ListCommand extends AbstractCommand
+class ListCommand extends AbstractCommand implements CommandInterface
 {
     public const NAME = 'bartlett:db:list';
 

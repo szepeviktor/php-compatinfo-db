@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class PublishCommand extends AbstractCommand
+class PublishCommand extends AbstractCommand implements CommandInterface
 {
     public const NAME = 'bartlett:db:publish:php';
 

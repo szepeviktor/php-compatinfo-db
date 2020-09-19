@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Update JSON files when a new PHP version is released.
  */
-class ReleaseCommand extends AbstractCommand
+class ReleaseCommand extends AbstractCommand implements CommandInterface
 {
     public const NAME = 'bartlett:db:release:php';
 
