@@ -6,4 +6,8 @@ using the [Keep a CHANGELOG](http://keepachangelog.com) principles.
 
 ## [Unreleased]
 
+### Added
+
+* [#52](https://github.com/llaville/php-compatinfo-db/issues/52) Configuration - read it from a compatible PSR11 container
+
 [unreleased]: https://github.com/llaville/php-compatinfo-db/compare/2.18.0...HEAD

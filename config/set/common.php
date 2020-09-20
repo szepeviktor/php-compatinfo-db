@@ -27,8 +27,14 @@ return static function (ContainerConfigurator $containerConfigurator): void
         ->autowire()
     ;
 
-    $services->set(InputInterface::class, Input::class);
-    $services->set(OutputInterface::class, Output::class);
+    $services->set(InputInterface::class, Input::class)
+        // for configuration option of bin file
+        ->public()
+    ;
+    $services->set(OutputInterface::class, Output::class)
+        // for configuration option of bin file
+        ->public()
+    ;
 
     $services->set(ApplicationInterface::class, Application::class)
         // for bin file
