@@ -10,4 +10,9 @@ using the [Keep a CHANGELOG](http://keepachangelog.com) principles.
 
 * [#52](https://github.com/llaville/php-compatinfo-db/issues/52) Configuration - read it from a compatible PSR11 container
 
+### Changed
+
+* [#50](https://github.com/llaville/php-compatinfo-db/issues/50) Dependency-Injection with Symfony component
+replace old `ContainerService` that was introduced in version 2.13
+
 [unreleased]: https://github.com/llaville/php-compatinfo-db/compare/2.18.0...HEAD
