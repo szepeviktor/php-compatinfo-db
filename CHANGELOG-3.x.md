@@ -8,13 +8,13 @@ using the [Keep a CHANGELOG](http://keepachangelog.com) principles.
 
 ### Added
 
-* [#52](https://github.com/llaville/php-compatinfo-db/issues/52) Configuration - read it from a compatible PSR11 container
+- [#52](https://github.com/llaville/php-compatinfo-db/issues/52) Configuration - read it from a compatible PSR11 container
 
 ### Changed
 
-* [#50](https://github.com/llaville/php-compatinfo-db/issues/50) Dependency-Injection with Symfony component
+- [#50](https://github.com/llaville/php-compatinfo-db/issues/50) Dependency-Injection with Symfony component
 replace old `ContainerService` that was introduced in version 2.13
-
-* [#54](https://github.com/llaville/php-compatinfo-db/issues/54) update Sqlite3 reference to support PHP 8.0
+- [#54](https://github.com/llaville/php-compatinfo-db/issues/54) update Sqlite3 reference to support PHP 8.0
+- OAuth reference updated to version 2.0.7 (stable)
 
 [unreleased]: https://github.com/llaville/php-compatinfo-db/compare/2.18.0...HEAD
