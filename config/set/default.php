@@ -34,7 +34,9 @@ return static function (ContainerConfigurator $containerConfigurator): void
     $services->set(JsonFileHandler::class)
         ->arg('$refDir', __DIR__ . '/../../data/references')
     ;
-    
+
     // @link https://tactician.thephpleague.com/
     $services->set(CommandBusInterface::class, TacticianCommandBus::class);
+
+    $containerConfigurator->import(__DIR__ . '/../packages/tactician.php');
 };
