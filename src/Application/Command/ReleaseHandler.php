@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Bartlett\CompatInfoDb\Application\Command;
 
+use Bartlett\CompatInfoDb\Application\Service\JsonFileHandler;
 use Bartlett\CompatInfoDb\ExtensionFactory;
 
 class ReleaseHandler implements CommandHandlerInterface
 {
     private $jsonFileHandler;
 
-    public function __construct($jsonFileHandler)
+    public function __construct(JsonFileHandler $jsonFileHandler)
     {
         $this->jsonFileHandler = $jsonFileHandler;
     }

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Bartlett\CompatInfoDb\Application\Command;
 
+use Bartlett\CompatInfoDb\Application\Service\JsonFileHandler;
 use Bartlett\CompatInfoDb\ReferenceCollection;
+
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class InitHandler implements CommandHandlerInterface
@@ -12,7 +14,7 @@ class InitHandler implements CommandHandlerInterface
     private $jsonFileHandler;
     private $extensions;
 
-    public function __construct($jsonFileHandler)
+    public function __construct(JsonFileHandler $jsonFileHandler)
     {
         $this->jsonFileHandler = $jsonFileHandler;
     }
