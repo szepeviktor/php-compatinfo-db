@@ -15,7 +15,6 @@ using the [Keep a CHANGELOG](http://keepachangelog.com) principles.
 - [#50](https://github.com/llaville/php-compatinfo-db/issues/50) Dependency-Injection with Symfony component
 replace old `ContainerService` that was introduced in version 2.13
 - [#54](https://github.com/llaville/php-compatinfo-db/issues/54) update Sqlite3 reference to support PHP 8.0
-- OAuth reference updated to version 2.0.7 (stable)
 - Replaces `InMemoryLocator` in Tactician command bus, by `ContainerLocator` (see https://tactician.thephpleague.com/plugins/container/)
 
 [unreleased]: https://github.com/llaville/php-compatinfo-db/compare/2.18.0...HEAD
