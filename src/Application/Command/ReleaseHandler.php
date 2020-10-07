@@ -477,6 +477,7 @@ class ReleaseHandler implements CommandHandlerInterface
             'hebrevc'                               => ExtensionFactory::LATEST_PHP_7_4,
             'is_real'                               => ExtensionFactory::LATEST_PHP_7_4,
             'money_format'                          => ExtensionFactory::LATEST_PHP_7_4,
+            'restore_include_path'                  => ExtensionFactory::LATEST_PHP_7_4,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
