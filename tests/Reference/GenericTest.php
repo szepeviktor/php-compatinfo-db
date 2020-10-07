@@ -410,20 +410,25 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
                 array_push($optional, $element);
             }
         }
-        if (!in_array($element, $optional)
-            && (empty($min) || version_compare(PHP_VERSION, $min) >= 0)
-            && (empty($max) || version_compare(PHP_VERSION, $max) <= 0)
-            && (!empty($emin) && version_compare($EXT_VERSION, $emin) >= 0)
-            && (!empty($emax) && version_compare($EXT_VERSION, $emax) <= 0)
-        ) {
-            // Should be there except if set as optional
-            $this->assertShouldBeThere($element, $refElementType);
-        }
-        if (!in_array($element, $ignored)) {
-            if (($min && version_compare(PHP_VERSION, $min) < 0)
-                || ($max && version_compare(PHP_VERSION, $max) > 0)
-            ) {
-                // Should not be there except if ignored
+        if (!in_array($element, $optional) && !in_array($element, $ignored)) {
+            if (!empty($min)) {
+                $shouldBeThere = version_compare(PHP_VERSION, $min, 'ge');
+            } else {
+                $shouldBeThere = false;
+            }
+            if (!empty($max) && $shouldBeThere) {
+                $shouldBeThere = version_compare(PHP_VERSION, $max, 'le');
+            }
+            if (!empty($emin) && $shouldBeThere) {
+                $shouldBeThere = version_compare($EXT_VERSION, $emin, 'ge');
+            }
+            if (!empty($emax) && $shouldBeThere) {
+                $shouldBeThere = version_compare($EXT_VERSION, $emax, 'le');
+            }
+            if ($shouldBeThere) {
+                // Should be there except if set as optional
+                $this->assertShouldBeThere($element, $refElementType);
+            } else {
                 $this->assertShouldNotBeThere($element, $refElementType, $min, $max);
             }
         }
