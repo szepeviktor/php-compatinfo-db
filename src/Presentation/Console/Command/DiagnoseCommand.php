@@ -28,6 +28,9 @@ class DiagnoseCommand extends AbstractCommand implements CommandInterface
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $output->writeln('As laminas/laminas-diagnostics is not yet compatible PHP 8.0 <info>it has been de-activated</info>');
+        return 0;
+
         $diagnoseCommand = new AppDiagnoseCommand();
         $diagnoseCommand->databaseParams = DatabaseFactory::getDsn('sqlite');
 
