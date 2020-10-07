@@ -475,6 +475,7 @@ class ReleaseHandler implements CommandHandlerInterface
             'get_magic_quotes_gpc'                  => ExtensionFactory::LATEST_PHP_7_4,
             'get_magic_quotes_runtime'              => ExtensionFactory::LATEST_PHP_7_4,
             'hebrevc'                               => ExtensionFactory::LATEST_PHP_7_4,
+            'is_real'                               => ExtensionFactory::LATEST_PHP_7_4,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
