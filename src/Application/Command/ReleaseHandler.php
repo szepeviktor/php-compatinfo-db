@@ -468,6 +468,8 @@ class ReleaseHandler implements CommandHandlerInterface
             'magic_quotes_runtime'                  => ExtensionFactory::LATEST_PHP_5_6,
             'set_magic_quotes_runtime'              => ExtensionFactory::LATEST_PHP_5_6,
             'set_socket_blocking'                   => ExtensionFactory::LATEST_PHP_5_6,
+
+            'convert_cyr_string'                    => ExtensionFactory::LATEST_PHP_7_4,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
