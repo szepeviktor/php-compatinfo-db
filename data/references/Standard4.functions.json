@@ -1099,7 +1099,7 @@
         "ext_min": "4.0.2",
         "ext_max": "",
         "php_min": "4.0.2",
-        "php_max": "",
+        "php_max": "7.4.11",
         "parameters": "",
         "php_excludes": ""
     },

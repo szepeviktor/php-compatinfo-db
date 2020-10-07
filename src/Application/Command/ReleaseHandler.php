@@ -470,6 +470,7 @@ class ReleaseHandler implements CommandHandlerInterface
             'set_socket_blocking'                   => ExtensionFactory::LATEST_PHP_5_6,
 
             'convert_cyr_string'                    => ExtensionFactory::LATEST_PHP_7_4,
+            'ezmlm_hash'                            => ExtensionFactory::LATEST_PHP_7_4,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
