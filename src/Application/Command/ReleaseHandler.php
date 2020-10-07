@@ -58,6 +58,8 @@ class ReleaseHandler implements CommandHandlerInterface
             'exit_on_timeout'                       => ExtensionFactory::LATEST_PHP_7_0,
 
             'sql.safe_mode'                         => ExtensionFactory::LATEST_PHP_7_1,
+
+            'track_errors'                          => ExtensionFactory::LATEST_PHP_7_4,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
