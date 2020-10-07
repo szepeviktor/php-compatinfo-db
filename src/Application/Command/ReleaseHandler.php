@@ -472,6 +472,8 @@ class ReleaseHandler implements CommandHandlerInterface
             'convert_cyr_string'                    => ExtensionFactory::LATEST_PHP_7_4,
             'ezmlm_hash'                            => ExtensionFactory::LATEST_PHP_7_4,
             'fgetss'                                => ExtensionFactory::LATEST_PHP_7_4,
+            'get_magic_quotes_gpc'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'get_magic_quotes_runtime'              => ExtensionFactory::LATEST_PHP_7_4,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
