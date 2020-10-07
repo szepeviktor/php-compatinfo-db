@@ -8,6 +8,7 @@ using the [Keep a CHANGELOG](http://keepachangelog.com) principles.
 
 ### Added
 
+- [#49](https://github.com/llaville/php-compatinfo-db/issues/49) Add support to PHP 8.0
 - [#52](https://github.com/llaville/php-compatinfo-db/issues/52) Configuration - read it from a compatible PSR11 container
 
 ### Changed
@@ -17,4 +18,4 @@ replace old `ContainerService` that was introduced in version 2.13
 - [#54](https://github.com/llaville/php-compatinfo-db/issues/54) update Sqlite3 reference to support PHP 8.0
 - Replaces `InMemoryLocator` in Tactician command bus, by `ContainerLocator` (see https://tactician.thephpleague.com/plugins/container/)
 
-[unreleased]: https://github.com/llaville/php-compatinfo-db/compare/2.18.0...HEAD
+[unreleased]: https://github.com/llaville/php-compatinfo-db/compare/2.19.0...HEAD

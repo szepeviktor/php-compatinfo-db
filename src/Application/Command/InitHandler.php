@@ -148,17 +148,17 @@ class InitHandler implements CommandHandlerInterface
             'core' => array(
                 'classes'    => array('4', '5', '7', '71'),
                 'constants'  => array('4', '5', '71'),
-                'functions'  => array('4', '5', '7', '73', '74'),
-                'iniEntries' => array('4', '5', '7', '71', '73', '74'),
-                'interfaces' => array('5', '7', '72'),
-                'releases'   => array('4', '5', '70', '71', '72', '73', '74'),
+                'functions'  => array('4', '5', '7', '73', '74', '80'),
+                'iniEntries' => array('4', '5', '7', '71', '73', '74', '80'),
+                'interfaces' => array('5', '7', '72', '80'),
+                'releases'   => array('4', '5', '70', '71', '72', '73', '74', '80'),
             ),
             'standard' => array(
                 'classes'    => array('4', '5', '7'),
                 'constants'  => array('4', '5', '7', '71'),
-                'functions'  => array('4', '5', '7', '71', '72', '73', '74'),
+                'functions'  => array('4', '5', '7', '71', '72', '73', '74', '80'),
                 'iniEntries' => array('4', '5', '7', '71', '74'),
-                'releases'   => array('4', '5', '7', '72', '73', '74'),
+                'releases'   => array('4', '5', '7', '72', '73', '74', '80'),
                 'methods'    => array('4', '5', '7', '71'),
             ),
             'apcu' => array(
