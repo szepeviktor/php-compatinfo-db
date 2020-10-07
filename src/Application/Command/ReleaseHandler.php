@@ -446,7 +446,7 @@ class ReleaseHandler implements CommandHandlerInterface
         $names   = array(
             'safe_mode_allowed_env_vars'            => ExtensionFactory::LATEST_PHP_5_3,
             'safe_mode_protected_env_vars'          => ExtensionFactory::LATEST_PHP_5_3,
-            
+
             'assert.quiet_eval'                     => ExtensionFactory::LATEST_PHP_7_4,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
@@ -477,6 +477,8 @@ class ReleaseHandler implements CommandHandlerInterface
         $entry   = 'php_max';
         $names   = array(
             'STREAM_ENFORCE_SAFE_MODE'              => ExtensionFactory::LATEST_PHP_5_3,
+
+            'ASSERT_QUIET_EVAL'                     => ExtensionFactory::LATEST_PHP_7_4,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
