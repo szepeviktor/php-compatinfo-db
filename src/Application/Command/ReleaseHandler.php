@@ -78,6 +78,7 @@ class ReleaseHandler implements CommandHandlerInterface
         $entry   = 'php_max';
         $names   = array(
             'create_function'                       => ExtensionFactory::LATEST_PHP_7_4,
+            'each'                                  => ExtensionFactory::LATEST_PHP_7_4,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
