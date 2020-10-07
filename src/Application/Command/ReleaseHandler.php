@@ -56,6 +56,8 @@ class ReleaseHandler implements CommandHandlerInterface
             'asp_tags'                              => ExtensionFactory::LATEST_PHP_5_6,
 
             'exit_on_timeout'                       => ExtensionFactory::LATEST_PHP_7_0,
+
+            'sql.safe_mode'                         => ExtensionFactory::LATEST_PHP_7_1,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
