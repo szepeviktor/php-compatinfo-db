@@ -306,6 +306,15 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
+        $refName = 'Intl';
+        $ext     = 'constants';
+        $major   = '2';
+        $entry   = 'php_max';
+        $names   = array(
+            'INTL_IDNA_VARIANT_2003'                => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
         $refName = 'Mcrypt';
         $ext     = 'constants';
         $major   = '';
