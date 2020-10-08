@@ -209,8 +209,7 @@ class ReleaseHandler implements CommandHandlerInterface
         $major   = '1';
         $entry   = 'php_max';
         $names   = array(
-            // IntlDateFormatter
-            'setTimeZoneId'                         => ExtensionFactory::LATEST_PHP_5_6,
+            'IntlDateFormatter::setTimeZoneId'      => ExtensionFactory::LATEST_PHP_5_6,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
@@ -389,8 +388,7 @@ class ReleaseHandler implements CommandHandlerInterface
         $major   = '';
         $entry   = 'php_max';
         $names   = array(
-            // OAuth
-            '__destruct'                            => ExtensionFactory::LATEST_PHP_5_6,
+            'OAuth::__destruct'                     => ExtensionFactory::LATEST_PHP_5_6,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
@@ -546,11 +544,27 @@ class ReleaseHandler implements CommandHandlerInterface
 
             $key = $ext == 'releases' ? 'rel_version' : 'name';
 
+            if ('methods' === $ext) {
+                $methods = [];
+                foreach (array_keys($names) as $method) {
+                    $parts = explode ('::', $method);
+                    $methods[$parts[0]] = $parts[1];
+                }
+            }
+
             foreach ($data as &$element) {
-                if (array_key_exists($element[$key], $names)) {
-                    $element[$entry] = $names[$element[$key]];
-                } elseif (array_key_exists('*', $names)) {
-                    $element[$entry] = $names['*'];
+                if ('methods' === $ext) {
+                    if (array_key_exists($element['class_name'], $methods)) {
+                        if (in_array($element[$key], array_values($methods))) {
+                            $element[$entry] = $names[implode('::', [$element['class_name'], $element[$key]])];
+                        }
+                    }
+                } else {
+                    if (array_key_exists($element[$key], $names)) {
+                        $element[$entry] = $names[$element[$key]];
+                    } elseif (array_key_exists('*', $names)) {
+                        $element[$entry] = $names['*'];
+                    }
                 }
             }
             $this->jsonFileHandler->write($refName, $ext, $major, $data);
