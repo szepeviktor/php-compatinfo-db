@@ -55,7 +55,7 @@
         "ext_min": "5.4.0",
         "ext_max": "",
         "php_min": "5.4.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "parameters": "",
         "php_excludes": ""
     },
@@ -65,7 +65,7 @@
         "ext_min": "5.4.0",
         "ext_max": "",
         "php_min": "5.4.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "parameters": "",
         "php_excludes": ""
     },
@@ -425,7 +425,7 @@
         "ext_min": "4.2.0",
         "ext_max": "",
         "php_min": "4.2.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "parameters": "",
         "php_excludes": ""
     },

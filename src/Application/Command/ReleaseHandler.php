@@ -315,6 +315,17 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
+        $refName = 'Ldap';
+        $ext     = 'functions';
+        $major   = '';
+        $entry   = 'php_max';
+        $names   = array(
+            'ldap_control_paged_result'             => ExtensionFactory::LATEST_PHP_7_4,
+            'ldap_control_paged_result_response'    => ExtensionFactory::LATEST_PHP_7_4,
+            'ldap_sort'                             => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
         $refName = 'Mcrypt';
         $ext     = 'constants';
         $major   = '';
