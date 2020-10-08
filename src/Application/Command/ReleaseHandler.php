@@ -160,6 +160,19 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
+        $refName = 'Filter';
+        $ext     = 'constants';
+        $major   = '';
+        $entry   = 'php_max';
+        $names   = array(
+            'FILTER_FLAG_HOST_REQUIRED'             => ExtensionFactory::LATEST_PHP_7_4,
+            'FILTER_FLAG_SCHEME_REQUIRED'           => ExtensionFactory::LATEST_PHP_7_4,
+            'FILTER_SANITIZE_MAGIC_QUOTES'          => ExtensionFactory::LATEST_PHP_7_4,
+            'INPUT_REQUEST'                         => ExtensionFactory::LATEST_PHP_7_4,
+            'INPUT_SESSION'                         => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
         $refName = 'Http';
         $ext     = 'releases';
         $major   = '';
