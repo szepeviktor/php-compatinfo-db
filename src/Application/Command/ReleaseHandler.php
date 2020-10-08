@@ -91,6 +91,57 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
+        $refName = 'Dom';
+        $ext     = 'classes';
+        $major   = '';
+        $entry   = 'php_max';
+        $names   = array(
+            'DOMConfiguration'                      => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMDomError'                           => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMErrorHandler'                       => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMImplementationList'                 => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMImplementationSource'               => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMLocator'                            => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNameList'                           => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMStringExtend'                       => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMStringList'                         => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMTypeinfo'                           => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMUserDataHandler'                    => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
+        $refName = 'Dom';
+        $ext     = 'methods';
+        $major   = '';
+        $entry   = 'php_max';
+        $names   = array(
+            'DOMConfiguration::canSetParameter'     => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMConfiguration::getParameter'        => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMConfiguration::setParameter'        => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMDocument::renameNode'               => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMErrorHandler::handleError'          => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMImplementationList::item'           => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMImplementationSource::getDomimplementation'  => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMImplementationSource::getDomimplementations' => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNameList::getName'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNameList::getNamespaceURI'          => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNamedNodeMap::removeNamedItem'      => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNamedNodeMap::removeNamedItemNS'    => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNamedNodeMap::setNamedItem'         => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNamedNodeMap::setNamedItemNS'       => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNode::compareDocumentPosition'      => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNode::getFeature'                   => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNode::getUserData'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNode::isEqualNode'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMNode::setUserData'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMStringExtend::findOffset16'         => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMStringExtend::findOffset32'         => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMStringList::item'                   => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMText::replaceWholeText'             => ExtensionFactory::LATEST_PHP_7_4,
+            'DOMUserDataHandler::handle'            => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
         $refName = 'Fileinfo';
         $ext     = 'constants';
         $major   = '';
