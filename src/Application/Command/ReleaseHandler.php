@@ -548,14 +548,17 @@ class ReleaseHandler implements CommandHandlerInterface
                 $methods = [];
                 foreach (array_keys($names) as $method) {
                     $parts = explode ('::', $method);
-                    $methods[$parts[0]] = $parts[1];
+                    if (!isset($methods[$parts[0]])) {
+                        $methods[$parts[0]] = [];
+                    }
+                    $methods[$parts[0]][] = $parts[1];
                 }
             }
 
             foreach ($data as &$element) {
                 if ('methods' === $ext) {
                     if (array_key_exists($element['class_name'], $methods)) {
-                        if (in_array($element[$key], array_values($methods))) {
+                        if (in_array($element[$key], $methods[$element['class_name']])) {
                             $element[$entry] = $names[implode('::', [$element['class_name'], $element[$key]])];
                         }
                     }
