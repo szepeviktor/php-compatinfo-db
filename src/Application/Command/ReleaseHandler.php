@@ -547,6 +547,64 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
+        $refName = 'Oci8';
+        $ext     = 'functions';
+        $major   = '';
+        $entry   = 'php_max';
+        $names   = array(
+            'oci_internal_debug'                    => ExtensionFactory::LATEST_PHP_7_4,
+            'ociinternaldebug'                      => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
+        $refName = 'Oci8';
+        $ext     = 'classes';
+        $major   = '';
+        $entry   = 'php_max';
+        $names   = array(
+            'OCI-Collection'                        => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob'                               => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
+        $refName = 'Oci8';
+        $ext     = 'methods';
+        $major   = '';
+        $entry   = 'php_max';
+        $names   = array(
+            'OCI-Collection::append'                => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Collection::assign'                => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Collection::assignelem'            => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Collection::free'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Collection::getelem'               => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Collection::max'                   => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Collection::size'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Collection::trim'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::append'                       => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::close'                        => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::eof'                          => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::erase'                        => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::export'                       => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::flush'                        => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::free'                         => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::getbuffering'                 => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::import'                       => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::load'                         => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::read'                         => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::rewind'                       => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::save'                         => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::savefile'                     => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::seek'                         => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::setbuffering'                 => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::size'                         => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::tell'                         => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::truncate'                     => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::write'                        => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::writetemporary'               => ExtensionFactory::LATEST_PHP_7_4,
+            'OCI-Lob::writetofile'                  => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
         $refName = 'Session';
         $ext     = 'functions';
         $major   = '';

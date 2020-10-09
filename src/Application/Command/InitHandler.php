@@ -335,12 +335,12 @@ class InitHandler implements CommandHandlerInterface
                 'releases'   => array('', '70', '71'),
             ),
             'oci8' => array(
-                'classes'    => array(''),
+                'classes'    => array('', '3'),
                 'constants'  => array(''),
                 'functions'  => array(''),
                 'iniEntries' => array(''),
-                'releases'   => array('1', '2'),
-                'methods'    => array(''),
+                'releases'   => array('1', '2', '3'),
+                'methods'    => array('', '3'),
             ),
             'openssl' => array(
                 'constants'  => array('', '71'),

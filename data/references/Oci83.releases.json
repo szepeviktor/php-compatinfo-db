@@ -1,0 +1,11 @@
+[
+    {
+        "ext_name_fk": 108,
+        "rel_version": "3.0.0",
+        "rel_date": "2020-07-15",
+        "rel_state": "stable",
+        "ext_max": "",
+        "php_min": "8.0.0alpha3",
+        "php_max": ""
+    }
+]
