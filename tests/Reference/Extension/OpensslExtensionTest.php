@@ -51,6 +51,8 @@ class OpensslExtensionTest extends GenericTest
             'OPENSSL_TLSEXT_SERVER_NAME',
             // requires HAVE_EVP_PKEY_EC
             'OPENSSL_KEYTYPE_EC',
+            // requires OPENSSL_VERSION_NUMBER < 0x10100000L or LIBRESSL_VERSION_NUMBER < 0x20700000L
+            'OPENSSL_ALGO_DSS1',
         );
 
         parent::setUpBeforeClass();
