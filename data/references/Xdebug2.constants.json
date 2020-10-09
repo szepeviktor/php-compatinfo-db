@@ -5,7 +5,7 @@
         "ext_min": "2.0.0RC1",
         "ext_max": "",
         "php_min": "4.3.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "php_excludes": ""
     },
     {
@@ -14,7 +14,7 @@
         "ext_min": "2.0.0beta2",
         "ext_max": "",
         "php_min": "4.3.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "php_excludes": ""
     },
     {
@@ -23,7 +23,7 @@
         "ext_min": "2.0.0beta1",
         "ext_max": "",
         "php_min": "4.3.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "php_excludes": ""
     },
     {
@@ -32,7 +32,7 @@
         "ext_min": "2.0.0beta1",
         "ext_max": "",
         "php_min": "4.3.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "php_excludes": ""
     },
     {
@@ -41,7 +41,7 @@
         "ext_min": "2.0.0RC1",
         "ext_max": "",
         "php_min": "4.3.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "php_excludes": ""
     },
     {
@@ -50,7 +50,7 @@
         "ext_min": "2.3.0",
         "ext_max": "",
         "php_min": "5.4.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "php_excludes": ""
     },
     {
@@ -68,7 +68,7 @@
         "ext_min": "2.3.0",
         "ext_max": "",
         "php_min": "5.4.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "php_excludes": ""
     },
     {
@@ -104,7 +104,7 @@
         "ext_min": "2.6.0beta1",
         "ext_max": "",
         "php_min": "7.0.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "php_excludes": ""
     },
     {
@@ -113,7 +113,7 @@
         "ext_min": "2.6.0beta1",
         "ext_max": "",
         "php_min": "7.0.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "php_excludes": ""
     },
     {
@@ -122,7 +122,7 @@
         "ext_min": "2.6.0beta1",
         "ext_max": "",
         "php_min": "7.0.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "php_excludes": ""
     },
     {
@@ -131,7 +131,7 @@
         "ext_min": "2.6.0beta1",
         "ext_max": "",
         "php_min": "7.0.0",
-        "php_max": "",
+        "php_max": "7.4.11",
         "php_excludes": ""
     }
 ]

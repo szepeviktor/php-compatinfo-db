@@ -739,6 +739,59 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
+        $refName = 'Xdebug';
+        $ext     = 'iniEntries';
+        $major   = '2';
+        $entry   = 'php_max';
+        $names   = array(
+            'xdebug.profiler_aggregate'             => ExtensionFactory::LATEST_PHP_7_4,
+            'xdebug.remote_addr_header'             => ExtensionFactory::LATEST_PHP_7_4,
+            'xdebug.remote_cookie_expire_time'      => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
+        $refName = 'Xdebug';
+        $ext     = 'functions';
+        $major   = '1';
+        $entry   = 'php_max';
+        $names   = array(
+            'xdebug_disable'                        => ExtensionFactory::LATEST_PHP_7_4,
+            'xdebug_enable'                         => ExtensionFactory::LATEST_PHP_7_4,
+            'xdebug_is_enabled'                     => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
+        $refName = 'Xdebug';
+        $ext     = 'functions';
+        $major   = '2';
+        $entry   = 'php_max';
+        $names   = array(
+            'xdebug_clear_aggr_profiling_data'      => ExtensionFactory::LATEST_PHP_7_4,
+            'xdebug_dump_aggr_profiling_data'       => ExtensionFactory::LATEST_PHP_7_4,
+            'xdebug_get_declared_vars'              => ExtensionFactory::LATEST_PHP_7_4,
+            'xdebug_get_formatted_function_stack'   => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
+        $refName = 'Xdebug';
+        $ext     = 'constants';
+        $major   = '2';
+        $entry   = 'php_max';
+        $names   = array(
+            'XDEBUG_CC_BRANCH_CHECK'                => ExtensionFactory::LATEST_PHP_7_4,
+            'XDEBUG_CC_DEAD_CODE'                   => ExtensionFactory::LATEST_PHP_7_4,
+            'XDEBUG_CC_UNUSED'                      => ExtensionFactory::LATEST_PHP_7_4,
+            'XDEBUG_NAMESPACE_BLACKLIST'            => ExtensionFactory::LATEST_PHP_7_4,
+            'XDEBUG_NAMESPACE_WHITELIST'            => ExtensionFactory::LATEST_PHP_7_4,
+            'XDEBUG_PATH_BLACKLIST'                 => ExtensionFactory::LATEST_PHP_7_4,
+            'XDEBUG_PATH_WHITELIST'                 => ExtensionFactory::LATEST_PHP_7_4,
+            'XDEBUG_TRACE_APPEND'                   => ExtensionFactory::LATEST_PHP_7_4,
+            'XDEBUG_TRACE_COMPUTERIZED'             => ExtensionFactory::LATEST_PHP_7_4,
+            'XDEBUG_TRACE_HTML'                     => ExtensionFactory::LATEST_PHP_7_4,
+            'XDEBUG_TRACE_NAKED_FILENAME'           => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
         $refName = 'Xsl';
         $ext     = 'iniEntries';
         $major   = '';
