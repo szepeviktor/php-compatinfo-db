@@ -326,6 +326,48 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
+        $refName = 'Mbstring';
+        $ext     = 'iniEntries';
+        $major   = '';
+        $entry   = 'php_max';
+        $names   = array(
+            'mbstring.func_overload'                => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
+        $refName = 'Mbstring';
+        $ext     = 'functions';
+        $major   = '';
+        $entry   = 'php_max';
+        $names   = array(
+            'mbereg'                                => ExtensionFactory::LATEST_PHP_7_4,
+            'mbereg_match'                          => ExtensionFactory::LATEST_PHP_7_4,
+            'mbereg_replace'                        => ExtensionFactory::LATEST_PHP_7_4,
+            'mbereg_search'                         => ExtensionFactory::LATEST_PHP_7_4,
+            'mbereg_search_getpos'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'mbereg_search_getregs'                 => ExtensionFactory::LATEST_PHP_7_4,
+            'mbereg_search_init'                    => ExtensionFactory::LATEST_PHP_7_4,
+            'mbereg_search_pos'                     => ExtensionFactory::LATEST_PHP_7_4,
+            'mbereg_search_regs'                    => ExtensionFactory::LATEST_PHP_7_4,
+            'mbereg_search_setpos'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'mberegi'                               => ExtensionFactory::LATEST_PHP_7_4,
+            'mberegi_replace'                       => ExtensionFactory::LATEST_PHP_7_4,
+            'mbregex_encoding'                      => ExtensionFactory::LATEST_PHP_7_4,
+            'mbsplit'                               => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
+        $refName = 'Mbstring';
+        $ext     = 'constants';
+        $major   = '';
+        $entry   = 'ext_max';
+        $names   = array(
+            'MB_OVERLOAD_MAIL'                      => ExtensionFactory::LATEST_PHP_7_4,
+            'MB_OVERLOAD_REGEX'                     => ExtensionFactory::LATEST_PHP_7_4,
+            'MB_OVERLOAD_STRING'                    => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
         $refName = 'Mcrypt';
         $ext     = 'constants';
         $major   = '';
