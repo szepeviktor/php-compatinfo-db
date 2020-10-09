@@ -945,7 +945,7 @@
         "name": "zReverseRange",
         "static": false,
         "ext_min": "2.2.3",
-        "ext_max": "2.2.7",
+        "ext_max": "",
         "php_min": "5.2.0",
         "php_max": ""
     },
