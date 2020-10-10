@@ -59,7 +59,7 @@
         "ext_name_fk": 3,
         "name": "apc.rfc1867",
         "ext_min": "4.0.0",
-        "ext_max": "",
+        "ext_max": "4.0.11",
         "php_min": "5.3.0",
         "php_max": ""
     },
@@ -67,7 +67,7 @@
         "ext_name_fk": 3,
         "name": "apc.rfc1867_freq",
         "ext_min": "4.0.0",
-        "ext_max": "",
+        "ext_max": "4.0.11",
         "php_min": "5.3.0",
         "php_max": ""
     },
@@ -75,7 +75,7 @@
         "ext_name_fk": 3,
         "name": "apc.rfc1867_name",
         "ext_min": "4.0.0",
-        "ext_max": "",
+        "ext_max": "4.0.11",
         "php_min": "5.3.0",
         "php_max": ""
     },
@@ -83,7 +83,7 @@
         "ext_name_fk": 3,
         "name": "apc.rfc1867_prefix",
         "ext_min": "4.0.0",
-        "ext_max": "",
+        "ext_max": "4.0.11",
         "php_min": "5.3.0",
         "php_max": ""
     },
@@ -91,7 +91,7 @@
         "ext_name_fk": 3,
         "name": "apc.rfc1867_ttl",
         "ext_min": "4.0.0",
-        "ext_max": "",
+        "ext_max": "4.0.11",
         "php_min": "5.3.0",
         "php_max": ""
     },
@@ -155,7 +155,7 @@
         "ext_name_fk": 3,
         "name": "apc.writable",
         "ext_min": "4.0.1",
-        "ext_max": "",
+        "ext_max": "5.1.12",
         "php_min": "5.3.0",
         "php_max": ""
     }
