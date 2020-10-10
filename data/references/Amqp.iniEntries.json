@@ -50,7 +50,7 @@
     {
         "ext_name_fk": 1,
         "name": "amqp.prefetch_count",
-        "ext_min": "1.0.0",
+        "ext_min": "1.10.0",
         "ext_max": "",
         "php_min": "5.2.0",
         "php_max": ""
@@ -162,7 +162,7 @@
     {
         "ext_name_fk": 1,
         "name": "amqp.prefetch_size",
-        "ext_min": "1.10.4",
+        "ext_min": "1.10.0",
         "ext_max": "",
         "php_min": "5.6.0",
         "php_max": ""
@@ -170,7 +170,7 @@
     {
         "ext_name_fk": 1,
         "name": "amqp.global_prefetch_count",
-        "ext_min": "1.10.4",
+        "ext_min": "1.10.0",
         "ext_max": "",
         "php_min": "5.6.0",
         "php_max": ""
@@ -178,7 +178,7 @@
     {
         "ext_name_fk": 1,
         "name": "amqp.global_prefetch_size",
-        "ext_min": "1.10.4",
+        "ext_min": "1.10.0",
         "ext_max": "",
         "php_min": "5.6.0",
         "php_max": ""
