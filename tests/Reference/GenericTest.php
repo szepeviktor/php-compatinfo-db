@@ -18,7 +18,11 @@ namespace Bartlett\Tests\CompatInfoDb\Reference;
 use Bartlett\CompatInfoDb\ExtensionFactory;
 
 use Composer\Semver\Semver;
+
 use PHPUnit\Framework\ExpectationFailedException;
+
+use ReflectionException;
+use ReflectionMethod;
 
 /**
  * Tests for the PHP_CompatInfo, retrieving components informations
@@ -510,10 +514,16 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
 
         } elseif (self::REF_ELEMENT_METHOD == $refElementType) {
             list ($object, $method) = explode('::', $element);
-            $this->assertFalse(
-                method_exists($object, $method),
-                "Class Method '$element', found in Reference, exists."
-            );
+            try {
+                $method = new ReflectionMethod($object, $method);
+                $this->assertFalse(
+                    $method->getDeclaringClass() === $object,
+                    "Class Method '$element', found in Reference, exists."
+                );
+            } catch (ReflectionException $e) {
+                // thrown if the given method does not exist.
+                return;
+            }
         }
     }
 
@@ -686,7 +696,7 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
                     $method->getPrototype();
                     // don't check prototype methods
                     continue;
-                } catch (\ReflectionException $e) {
+                } catch (ReflectionException $e) {
                 }
 
                 $elements[] = $classname . '::' . $method->getName();
