@@ -89,6 +89,14 @@ class ExtensionFactory implements ReferenceInterface
                     ? INTL_ICU_VERSION : false,
             );
 
+        } elseif (in_array('zip', array($this->name, $extname))) {
+            $meta = array(
+                'version_number' => defined('LIBZIP_VERSION')
+                    ? LIBZIP_VERSION : false,
+                'version_text'   => defined('LIBZIP_VERSION')
+                    ? LIBZIP_VERSION : false,
+            );
+
         } elseif (in_array('openssl', array($this->name, $extname))) {
             $meta = array(
                 'version_number' => defined('OPENSSL_VERSION_NUMBER')
