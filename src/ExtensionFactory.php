@@ -91,10 +91,10 @@ class ExtensionFactory implements ReferenceInterface
 
         } elseif (in_array('zip', array($this->name, $extname))) {
             $meta = array(
-                'version_number' => defined('LIBZIP_VERSION')
-                    ? LIBZIP_VERSION : false,
-                'version_text'   => defined('LIBZIP_VERSION')
-                    ? LIBZIP_VERSION : false,
+                'version_number' => defined('ZipArchive::LIBZIP_VERSION')
+                    ? \ZipArchive::LIBZIP_VERSION : false,
+                'version_text'   => defined('ZipArchive::LIBZIP_VERSION')
+                    ? \ZipArchive::LIBZIP_VERSION : false,
             );
 
         } elseif (in_array('openssl', array($this->name, $extname))) {
