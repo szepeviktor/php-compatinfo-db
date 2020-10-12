@@ -461,7 +461,8 @@
         "ext_min": "1.19.0",
         "ext_max": "",
         "php_min": "5.4.0",
-        "php_max": ""
+        "php_max": "",
+        "lib_zip": "1.7.0"
     },
     {
         "ext_name_fk": 101,
@@ -471,6 +472,7 @@
         "ext_min": "1.19.0",
         "ext_max": "",
         "php_min": "5.4.0",
-        "php_max": ""
+        "php_max": "",
+        "lib_zip": "1.7.0"
     }
 ]
