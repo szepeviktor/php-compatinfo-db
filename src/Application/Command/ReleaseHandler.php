@@ -814,6 +814,15 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
+        $refName = 'Zlib';
+        $ext     = 'functions';
+        $major   = '';
+        $entry   = 'php_max';
+        $names   = array(
+            'gzgetss'                               => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
         // tag MAX version
         while (!empty($latest)) {
             list($refName, $ext, $major, $entry, $names) = array_pop($latest);
