@@ -18,6 +18,7 @@ replace old `ContainerService` that was introduced in version 2.13
 - [#54](https://github.com/llaville/php-compatinfo-db/issues/54) update Sqlite3 reference to support PHP 8.0
 - Replaces `InMemoryLocator` in Tactician command bus, by `ContainerLocator` (see https://tactician.thephpleague.com/plugins/container/)
 - [#56](https://github.com/llaville/php-compatinfo-db/issues/56) Lite alternative to `laminas-diagnostics` solution
+- Zip reference updated to version 1.9.1 (stable)
 
 ### Fixed
 

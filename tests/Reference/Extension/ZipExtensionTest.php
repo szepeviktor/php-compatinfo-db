@@ -36,4 +36,19 @@ use Bartlett\Tests\CompatInfoDb\Reference\GenericTest;
  */
 class ZipExtensionTest extends GenericTest
 {
+    /**
+     * Sets up the shared fixture.
+     *
+     * @return void
+     */
+    public static function setUpBeforeClass(): void
+    {
+        self::$optionalmethods = [
+            // requires libzip >= 1.7.0
+            'ZipArchive::isCompressionMethodSupported',
+            'ZipArchive::isEncryptionMethodSupported',
+        ];
+
+        parent::setUpBeforeClass();
+    }
 }
