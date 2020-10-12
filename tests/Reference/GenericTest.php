@@ -419,6 +419,19 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
         $emin = $range['ext.min'];
         $emax = $range['ext.max'];
 
+        $deprecated = $range['deprecated'] ?? '';
+
+        if (!empty($deprecated)) {
+            $shouldBeThere = version_compare(PHP_VERSION, $deprecated, 'le');
+
+            // used also for elements that were moved from one extension to another;
+            // i.e with `utf8_encode` (from `xml` to `standard` extension)
+
+            if (!$shouldBeThere) {
+                return; // ignore it !
+            }
+        }
+
         if (!empty($min)) {
             $shouldBeThere = version_compare(PHP_VERSION, $min, 'ge');
         } else {
