@@ -667,6 +667,15 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
+        $refName = 'Spl';
+        $ext     = 'methods';
+        $major   = '5';
+        $entry   = 'ext_max';
+        $names   = array(
+            'SplFileObject::fgetss'                 => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
         $refName = 'Standard';
         $ext     = 'iniEntries';
         $major   = '4';
