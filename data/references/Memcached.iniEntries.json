@@ -34,10 +34,10 @@
     {
         "ext_name_fk": 42,
         "name": "memcached.sess_binary",
-        "ext_min": "2.0.0",
-        "ext_max": "",
+        "ext_min": "2.2.0b1",
+        "ext_max": "3.1.5",
         "php_min": "5.2.0",
-        "php_max": ""
+        "php_max": "7.4.11"
     },
     {
         "ext_name_fk": 42,
@@ -195,9 +195,9 @@
         "ext_name_fk": 42,
         "name": "memcached.sess_remove_failed",
         "ext_min": "2.2.0b1",
-        "ext_max": "",
+        "ext_max": "3.1.5",
         "php_min": "5.2.0",
-        "php_max": ""
+        "php_max": "7.4.11"
     },
     {
         "ext_name_fk": 42,
@@ -229,6 +229,6 @@
         "ext_min": "2.0.0",
         "ext_max": "",
         "php_min": "5.2.0",
-        "php_max": ""
+        "php_max": "7.4.11"
     }
 ]
