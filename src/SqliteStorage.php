@@ -155,7 +155,8 @@ class SqliteStorage
             'SELECT i.name,' .
             ' ext_min as "ext.min", ext_max as "ext.max",' .
             ' php_min as "php.min", php_max as "php.max",' .
-            ' deprecated, lib_sqlite3' .
+            ' deprecated,' .
+            ' lib_sqlite3' .
             ' FROM bartlett_compatinfo_inientries i,  bartlett_compatinfo_extensions e' .
             ' WHERE i.ext_name_fk = e.id AND e.name = :name COLLATE NOCASE'
         );
@@ -163,7 +164,8 @@ class SqliteStorage
         $this->stmtClasses = $pdo->prepare(
             'SELECT c.name,' .
             ' e.name as "ext.name", ext_min as "ext.min", ext_max as "ext.max",' .
-            ' php_min as "php.min", php_max as "php.max"' .
+            ' php_min as "php.min", php_max as "php.max",' .
+            ' deprecated' .
             ' FROM bartlett_compatinfo_classes c,  bartlett_compatinfo_extensions e' .
             ' WHERE c.ext_name_fk = e.id AND e.name = :name COLLATE NOCASE'
         );
@@ -171,7 +173,8 @@ class SqliteStorage
         $this->stmtClassMethods = $pdo->prepare(
             'SELECT class_name, m.name, static,' .
             ' e.name as "ext.name", ext_min as "ext.min", ext_max as "ext.max",' .
-            ' php_min as "php.min", php_max as "php.max"' .
+            ' php_min as "php.min", php_max as "php.max",' .
+            ' deprecated' .
             ' FROM bartlett_compatinfo_methods m,  bartlett_compatinfo_extensions e' .
             ' WHERE m.ext_name_fk = e.id AND e.name = :name COLLATE NOCASE'
         );
@@ -180,6 +183,7 @@ class SqliteStorage
             'SELECT class_name, c.name,' .
             ' e.name as "ext.name", ext_min as "ext.min", ext_max as "ext.max",' .
             ' php_min as "php.min", php_max as "php.max",' .
+            ' deprecated,' .
             ' optional, lib_imagemagick, lib_zip' .
             ' FROM bartlett_compatinfo_const c,  bartlett_compatinfo_extensions e' .
             ' WHERE c.ext_name_fk = e.id AND e.name = :name COLLATE NOCASE'
@@ -188,7 +192,8 @@ class SqliteStorage
         $this->stmtInterfaces = $pdo->prepare(
             'SELECT i.name,' .
             ' e.name as "ext.name", ext_min as "ext.min", ext_max as "ext.max",' .
-            ' php_min as "php.min", php_max as "php.max"' .
+            ' php_min as "php.min", php_max as "php.max",' .
+            ' deprecated' .
             ' FROM bartlett_compatinfo_interfaces i,  bartlett_compatinfo_extensions e' .
             ' WHERE i.ext_name_fk = e.id AND e.name = :name COLLATE NOCASE'
         );
@@ -197,8 +202,9 @@ class SqliteStorage
             'SELECT f.name,' .
             ' e.name as "ext.name", ext_min as "ext.min", ext_max as "ext.max",' .
             ' php_min as "php.min", php_max as "php.max",' .
-            ' parameters, php_excludes as "php.excludes",' .
+            ' parameters,' .
             ' deprecated,' .
+            ' php_excludes as "php.excludes",' .
             ' lib_curl' .
             ' FROM bartlett_compatinfo_functions f,  bartlett_compatinfo_extensions e' .
             ' WHERE f.ext_name_fk = e.id AND e.name = :name COLLATE NOCASE'
@@ -208,6 +214,7 @@ class SqliteStorage
             'SELECT c.name,' .
             ' e.name as "ext.name", ext_min as "ext.min", ext_max as "ext.max",' .
             ' php_min as "php.min", php_max as "php.max",' .
+            ' deprecated,' .
             ' php_excludes as "php.excludes",' .
             ' optional,' .
             ' lib_curl' .

@@ -126,6 +126,10 @@ class ReferenceCollection
         $this->stmtClass->execute($criteria);
         $row = $this->stmtClass->fetch(\PDO::FETCH_ASSOC);
 
+        if (!isset($rec['deprecated'])) {
+            $rec['deprecated'] = '';
+        }
+
         if (is_array($row)) {
             if ($row == $rec) {
                 // nothing to do
@@ -150,6 +154,10 @@ class ReferenceCollection
         $this->stmtInterface->execute($criteria);
         $row = $this->stmtInterface->fetch(\PDO::FETCH_ASSOC);
 
+        if (!isset($rec['deprecated'])) {
+            $rec['deprecated'] = '';
+        }
+
         if (is_array($row)) {
             if ($row == $rec) {
                 // nothing to do
@@ -167,6 +175,10 @@ class ReferenceCollection
 
     public function addMethod($rec)
     {
+        if (!isset($rec['deprecated'])) {
+            $rec['deprecated'] = '';
+        }
+
         if (!isset($rec['prototype'])) {
             $rec['prototype']   = '';
             $rec['proto_since'] = '';
@@ -216,6 +228,10 @@ class ReferenceCollection
         );
         $this->stmtClassConst->execute($criteria);
         $row = $this->stmtClassConst->fetch(\PDO::FETCH_ASSOC);
+
+        if (!isset($rec['deprecated'])) {
+            $rec['deprecated'] = '';
+        }
 
         if (!isset($rec['optional'])) {
             $rec['optional'] = false;
@@ -284,6 +300,9 @@ class ReferenceCollection
         $this->stmtConstant->execute($criteria);
         $row = $this->stmtConstant->fetch(\PDO::FETCH_ASSOC);
 
+        if (!isset($rec['deprecated'])) {
+            $rec['deprecated'] = '';
+        }
         if (!isset($rec['optional'])) {
             $rec['optional'] = false;
         }
@@ -350,6 +369,7 @@ class ReferenceCollection
             ' (ext_name_fk INTEGER, name VARCHAR(32),' .
             ' ext_min VARCHAR(16), ext_max VARCHAR(16),' .
             ' php_min VARCHAR(16), php_max VARCHAR(16),' .
+            ' deprecated VARCHAR(16),' .
             ' PRIMARY KEY (ext_name_fk, name))'
         );
         $this->dbal->exec(
@@ -357,6 +377,7 @@ class ReferenceCollection
             ' (ext_name_fk INTEGER, name VARCHAR(32),' .
             ' ext_min VARCHAR(16), ext_max VARCHAR(16),' .
             ' php_min VARCHAR(16), php_max VARCHAR(16),' .
+            ' deprecated VARCHAR(16),' .
             ' PRIMARY KEY (ext_name_fk, name))'
         );
         $this->dbal->exec(
@@ -365,6 +386,7 @@ class ReferenceCollection
             ' static INTEGER,'.
             ' ext_min VARCHAR(16), ext_max VARCHAR(16),' .
             ' php_min VARCHAR(16), php_max VARCHAR(16),' .
+            ' deprecated VARCHAR(16),' .
             ' prototype VARCHAR(32), proto_since VARCHAR(16),' .
             ' optional INTEGER,'.
             ' lib_imagemagick VARCHAR(16), ' .
@@ -376,8 +398,9 @@ class ReferenceCollection
             ' (ext_name_fk INTEGER, name VARCHAR(32),' .
             ' ext_min VARCHAR(16), ext_max VARCHAR(16),' .
             ' php_min VARCHAR(16), php_max VARCHAR(16),' .
-            ' parameters VARCHAR(255), php_excludes VARCHAR(255),' .
+            ' parameters VARCHAR(255),' .
             ' deprecated VARCHAR(16),' .
+            ' php_excludes VARCHAR(255),' .
             ' lib_curl VARCHAR(16), ' .
             ' PRIMARY KEY (ext_name_fk, name))'
         );
@@ -386,6 +409,7 @@ class ReferenceCollection
             ' (ext_name_fk INTEGER, name VARCHAR(32),' .
             ' ext_min VARCHAR(16), ext_max VARCHAR(16),' .
             ' php_min VARCHAR(16), php_max VARCHAR(16),' .
+            ' deprecated VARCHAR(16),' .
             ' php_excludes VARCHAR(255), ' .
             ' optional INTEGER, ' .
             ' lib_curl VARCHAR(16), ' .
@@ -396,6 +420,7 @@ class ReferenceCollection
             ' (ext_name_fk INTEGER, class_name VARCHAR(32), name VARCHAR(32),' .
             ' ext_min VARCHAR(16), ext_max VARCHAR(16),' .
             ' php_min VARCHAR(16), php_max VARCHAR(16),' .
+            ' deprecated VARCHAR(16),' .
             ' optional INTEGER, ' .
             ' lib_imagemagick VARCHAR(16), ' .
             ' lib_zip VARCHAR(16), ' .
@@ -423,33 +448,33 @@ class ReferenceCollection
         );
         $this->stmtClasses = $this->dbal->prepare(
             'REPLACE INTO ' . $tblClasses .
-            ' (ext_name_fk, name, ext_min, ext_max, php_min, php_max)' .
-            ' VALUES (:ext_name_fk, :name, :ext_min, :ext_max, :php_min, :php_max)'
+            ' (ext_name_fk, name, ext_min, ext_max, php_min, php_max, deprecated)' .
+            ' VALUES (:ext_name_fk, :name, :ext_min, :ext_max, :php_min, :php_max, :deprecated)'
         );
         $this->stmtInterfaces = $this->dbal->prepare(
             'REPLACE INTO ' . $tblInterfaces .
-            ' (ext_name_fk, name, ext_min, ext_max, php_min, php_max)' .
-            ' VALUES (:ext_name_fk, :name, :ext_min, :ext_max, :php_min, :php_max)'
+            ' (ext_name_fk, name, ext_min, ext_max, php_min, php_max, deprecated)' .
+            ' VALUES (:ext_name_fk, :name, :ext_min, :ext_max, :php_min, :php_max, :deprecated)'
         );
         $this->stmtMethods = $this->dbal->prepare(
             'REPLACE INTO ' . $tblMethods .
-            ' (ext_name_fk, class_name, name, static, ext_min, ext_max, php_min, php_max, prototype, proto_since, optional, lib_imagemagick, lib_zip)' .
-            ' VALUES (:ext_name_fk, :class_name, :name, :static, :ext_min, :ext_max, :php_min, :php_max, :prototype, :proto_since, :optional, :lib_imagemagick, :lib_zip)'
+            ' (ext_name_fk, class_name, name, static, ext_min, ext_max, php_min, php_max, deprecated, prototype, proto_since, optional, lib_imagemagick, lib_zip)' .
+            ' VALUES (:ext_name_fk, :class_name, :name, :static, :ext_min, :ext_max, :php_min, :php_max, :deprecated, :prototype, :proto_since, :optional, :lib_imagemagick, :lib_zip)'
         );
         $this->stmtFunctions = $this->dbal->prepare(
             'REPLACE INTO ' . $tblFunctions .
-            ' (ext_name_fk, name, ext_min, ext_max, php_min, php_max, parameters, php_excludes, deprecated, lib_curl)' .
-            ' VALUES (:ext_name_fk, :name, :ext_min, :ext_max, :php_min, :php_max, :parameters, :php_excludes, :deprecated, :lib_curl)'
+            ' (ext_name_fk, name, ext_min, ext_max, php_min, php_max, parameters, deprecated, php_excludes, lib_curl)' .
+            ' VALUES (:ext_name_fk, :name, :ext_min, :ext_max, :php_min, :php_max, :parameters, :deprecated, :php_excludes, :lib_curl)'
         );
         $this->stmtConstants = $this->dbal->prepare(
             'REPLACE INTO ' . $tblConstants .
-            ' (ext_name_fk, name, ext_min, ext_max, php_min, php_max, php_excludes, optional, lib_curl)' .
-            ' VALUES (:ext_name_fk, :name, :ext_min, :ext_max, :php_min, :php_max, :php_excludes, :optional, :lib_curl)'
+            ' (ext_name_fk, name, ext_min, ext_max, php_min, php_max, deprecated, php_excludes, optional, lib_curl)' .
+            ' VALUES (:ext_name_fk, :name, :ext_min, :ext_max, :php_min, :php_max, :deprecated, :php_excludes, :optional, :lib_curl)'
         );
         $this->stmtClassConstant = $this->dbal->prepare(
             'REPLACE INTO ' . $tblClassConst .
-            ' (ext_name_fk, class_name, name, ext_min, ext_max, php_min, php_max, optional, lib_imagemagick, lib_zip)' .
-            ' VALUES (:ext_name_fk, :class_name, :name, :ext_min, :ext_max, :php_min, :php_max, :optional, :lib_imagemagick, :lib_zip)'
+            ' (ext_name_fk, class_name, name, ext_min, ext_max, php_min, php_max, deprecated, optional, lib_imagemagick, lib_zip)' .
+            ' VALUES (:ext_name_fk, :class_name, :name, :ext_min, :ext_max, :php_min, :php_max, :deprecated, :optional, :lib_imagemagick, :lib_zip)'
         );
 
         $this->stmtRelease = $this->dbal->prepare(
@@ -460,44 +485,55 @@ class ReferenceCollection
         );
         $this->stmtIniEntry = $this->dbal->prepare(
             'SELECT' .
-            ' ext_name_fk, name, ext_min, ext_max, php_min, php_max, deprecated, lib_sqlite3' .
+            ' ext_name_fk, name, ext_min, ext_max, php_min, php_max,' .
+            ' deprecated,' .
+            ' lib_sqlite3' .
             ' FROM ' . $tblIniEntries .
             ' WHERE ext_name_fk = :ext_name_fk AND name = :name COLLATE NOCASE'
         );
         $this->stmtClass = $this->dbal->prepare(
             'SELECT' .
-            ' ext_name_fk, name, ext_min, ext_max, php_min, php_max' .
+            ' ext_name_fk, name, ext_min, ext_max, php_min, php_max,' .
+            ' deprecated' .
             ' FROM ' . $tblClasses .
             ' WHERE ext_name_fk = :ext_name_fk AND name = :name COLLATE NOCASE'
         );
         $this->stmtInterface = $this->dbal->prepare(
             'SELECT' .
-            ' ext_name_fk, name, ext_min, ext_max, php_min, php_max' .
+            ' ext_name_fk, name, ext_min, ext_max, php_min, php_max,' .
+            ' deprecated' .
             ' FROM ' . $tblInterfaces .
             ' WHERE ext_name_fk = :ext_name_fk AND name = :name COLLATE NOCASE'
         );
         $this->stmtMethod = $this->dbal->prepare(
             'SELECT' .
             ' ext_name_fk, class_name, name, static, ext_min, ext_max, php_min, php_max' .
+            ' deprecated,' .
             ' prototype, proto_since, optional, lib_imagemagick, lib_zip' .
             ' FROM ' . $tblMethods .
             ' WHERE ext_name_fk = :ext_name_fk AND class_name = :class_name AND name = :name COLLATE NOCASE'
         );
         $this->stmtClassConst = $this->dbal->prepare(
             'SELECT' .
-            ' ext_name_fk, class_name, name, ext_min, ext_max, php_min, php_max, optional, lib_imagemagick, lib_zip' .
+            ' ext_name_fk, class_name, name, ext_min, ext_max, php_min, php_max,'.
+            ' deprecated,' .
+            ' optional, lib_imagemagick, lib_zip' .
             ' FROM ' . $tblClassConst .
             ' WHERE ext_name_fk = :ext_name_fk AND class_name = :class_name AND name = :name COLLATE NOCASE'
         );
         $this->stmtFunction = $this->dbal->prepare(
             'SELECT' .
-            ' ext_name_fk, name, ext_min, ext_max, php_min, php_max, parameters, php_excludes, deprecated, lib_curl' .
+            ' ext_name_fk, name, ext_min, ext_max, php_min, php_max, parameters,' .
+            ' deprecated,' .
+            ' php_excludes, lib_curl' .
             ' FROM ' . $tblFunctions .
             ' WHERE ext_name_fk = :ext_name_fk AND name = :name COLLATE NOCASE'
         );
         $this->stmtConstant = $this->dbal->prepare(
             'SELECT' .
-            ' ext_name_fk, name, ext_min, ext_max, php_min, php_max, php_excludes, optional, lib_curl' .
+            ' ext_name_fk, name, ext_min, ext_max, php_min, php_max,' .
+            ' deprecated,' .
+            ' php_excludes, optional, lib_curl' .
             ' FROM ' . $tblConstants .
             ' WHERE ext_name_fk = :ext_name_fk AND name = :name COLLATE NOCASE'
         );
