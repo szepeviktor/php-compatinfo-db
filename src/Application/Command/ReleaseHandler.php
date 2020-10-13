@@ -645,6 +645,20 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
+        $refName = 'Soap';
+        $ext     = 'methods';
+        $major   = '';
+        $entry   = 'ext_max';
+        $names   = array(
+            'SoapClient::SoapClient'                => ExtensionFactory::LATEST_PHP_7_4,
+            'SoapFault::SoapFault'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'SoapHeader::SoapHeader'                => ExtensionFactory::LATEST_PHP_7_4,
+            'SoapParam::SoapParam'                  => ExtensionFactory::LATEST_PHP_7_4,
+            'SoapServer::SoapServer'                => ExtensionFactory::LATEST_PHP_7_4,
+            'SoapVar::SoapVar'                      => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
         $refName = 'Spl';
         $ext     = 'interfaces';
         $major   = '';
