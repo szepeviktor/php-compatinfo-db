@@ -22,6 +22,7 @@ use Composer\Semver\Semver;
 use PHPUnit\Framework\ExpectationFailedException;
 
 use ReflectionException;
+use ReflectionFunction;
 use ReflectionMethod;
 
 /**
@@ -464,10 +465,19 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
             );
 
         } elseif (self::REF_ELEMENT_FUNCTION == $refElementType) {
-            $this->assertTrue(
-                function_exists($element),
-                "Function '$element', found in Reference, does not exists."
-            );
+            try {
+                $function = new ReflectionFunction($element);
+                $this->assertTrue(
+                    $function->isInternal(),
+                    "Function '$element', found in Reference, does not exists."
+                );
+            } catch (ReflectionException $e) {
+                // thrown if the given function does not exist.
+                $this->assertTrue(
+                    false,
+                    "Function '$element', found in Reference, does not exists."
+                );
+            }
 
         } elseif (self::REF_ELEMENT_CONSTANT == $refElementType) {
             $this->assertTrue(
@@ -505,10 +515,16 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
             );
 
         } elseif (self::REF_ELEMENT_FUNCTION == $refElementType) {
-            $this->assertFalse(
-                function_exists($element),
-                "Function '$element', found in Reference ($min,$max), exists."
-            );
+            try {
+                $function = new ReflectionFunction($element);
+                $this->assertFalse(
+                    $function->isInternal(),
+                    "Function '$element', found in Reference ($min,$max), exists."
+                );
+            } catch (ReflectionException $e) {
+                // thrown if the given function does not exist.
+                return;
+            }
 
         } elseif (self::REF_ELEMENT_CONSTANT == $refElementType) {
             $this->assertFalse(
