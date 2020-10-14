@@ -586,9 +586,9 @@
         "class_name": "DateTime",
         "name": "createFromImmutable",
         "static": true,
-        "ext_min": "5.6.8RC1",
+        "ext_min": "7.3.0alpha1",
         "ext_max": "",
-        "php_min": "5.6.8RC1",
+        "php_min": "7.3.0alpha1",
         "php_max": ""
     }
 ]
