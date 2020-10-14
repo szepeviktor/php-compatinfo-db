@@ -778,7 +778,6 @@ class ReleaseHandler implements CommandHandlerInterface
         $major   = '2';
         $entry   = 'php_max';
         $names   = array(
-            'xdebug.profiler_aggregate'             => ExtensionFactory::LATEST_PHP_7_4,
             'xdebug.remote_addr_header'             => ExtensionFactory::LATEST_PHP_7_4,
             'xdebug.remote_cookie_expire_time'      => ExtensionFactory::LATEST_PHP_7_4,
         );
