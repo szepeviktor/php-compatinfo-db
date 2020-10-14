@@ -25,7 +25,7 @@
         "name": "export",
         "static": true,
         "ext_min": "5.0.0",
-        "ext_max": "",
+        "ext_max": "7.4.11",
         "php_min": "5.0.0",
         "php_max": "7.4.11"
     },
@@ -295,7 +295,7 @@
         "name": "export",
         "static": true,
         "ext_min": "5.0.0",
-        "ext_max": "",
+        "ext_max": "7.4.11",
         "php_min": "5.0.0",
         "php_max": "7.4.11"
     },
@@ -345,7 +345,7 @@
         "name": "export",
         "static": true,
         "ext_min": "5.0.0",
-        "ext_max": "",
+        "ext_max": "7.4.11",
         "php_min": "5.0.0",
         "php_max": "7.4.11"
     },
@@ -535,7 +535,7 @@
         "name": "export",
         "static": true,
         "ext_min": "5.0.0",
-        "ext_max": "",
+        "ext_max": "7.4.11",
         "php_min": "5.0.0",
         "php_max": "7.4.11"
     },
@@ -705,7 +705,7 @@
         "name": "export",
         "static": true,
         "ext_min": "5.0.0",
-        "ext_max": "",
+        "ext_max": "7.4.11",
         "php_min": "5.0.0",
         "php_max": "7.4.11"
     },
@@ -1205,7 +1205,7 @@
         "name": "export",
         "static": true,
         "ext_min": "5.0.0",
-        "ext_max": "",
+        "ext_max": "7.4.11",
         "php_min": "5.0.0",
         "php_max": "7.4.11"
     },
@@ -1355,7 +1355,7 @@
         "name": "export",
         "static": true,
         "ext_min": "5.0.0",
-        "ext_max": "",
+        "ext_max": "7.4.11",
         "php_min": "5.0.0",
         "php_max": "7.4.11"
     },
@@ -1495,7 +1495,7 @@
         "name": "export",
         "static": true,
         "ext_min": "5.0.0",
-        "ext_max": "",
+        "ext_max": "7.4.11",
         "php_min": "5.0.0",
         "php_max": "7.4.11"
     },

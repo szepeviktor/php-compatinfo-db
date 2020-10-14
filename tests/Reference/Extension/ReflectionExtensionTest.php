@@ -36,4 +36,17 @@ use Bartlett\Tests\CompatInfoDb\Reference\GenericTest;
  */
 class ReflectionExtensionTest extends GenericTest
 {
+    /**
+     * Sets up the shared fixture.
+     *
+     * @return void
+     */
+    public static function setUpBeforeClass(): void
+    {
+        self::$optionalmethods = [
+            'Reflector::export'
+        ];
+
+        parent::setUpBeforeClass();
+    }
 }
