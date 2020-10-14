@@ -63,6 +63,8 @@ class StandardExtensionTest extends GenericTest
                 // not detected because of https://bugs.php.net/66218
                 'cli_get_process_title',
                 'cli_set_process_title',
+                // alias
+                'getdir',
             );
         } else {
             self::$optionalfunctions = array(
