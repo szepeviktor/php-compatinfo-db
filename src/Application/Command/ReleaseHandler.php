@@ -841,7 +841,7 @@ class ReleaseHandler implements CommandHandlerInterface
 
             'opcache.fast_shutdown'                 => ExtensionFactory::LATEST_PHP_7_1,
 
-            'opcache.inherited_hack'                => ExtensionFactory::LATEST_PHP_7_4,
+            'opcache.inherited_hack'                => ExtensionFactory::LATEST_PHP_7_2,
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 

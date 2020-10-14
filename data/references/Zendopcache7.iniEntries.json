@@ -37,7 +37,7 @@
         "ext_min": "7.0.1",
         "ext_max": "",
         "php_min": "5.2.0",
-        "php_max": "7.4.11"
+        "php_max": "7.2.34"
     },
     {
         "ext_name_fk": 100,
