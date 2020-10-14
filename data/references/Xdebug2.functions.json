@@ -13,9 +13,9 @@
         "ext_name_fk": 91,
         "name": "xdebug_clear_aggr_profiling_data",
         "ext_min": "2.0.0beta6",
-        "ext_max": "",
+        "ext_max": "2.8.1",
         "php_min": "4.3.0",
-        "php_max": "7.4.11",
+        "php_max": "",
         "parameters": "",
         "php_excludes": ""
     },
@@ -43,9 +43,9 @@
         "ext_name_fk": 91,
         "name": "xdebug_dump_aggr_profiling_data",
         "ext_min": "2.0.0beta6",
-        "ext_max": "",
+        "ext_max": "2.8.1",
         "php_min": "4.3.0",
-        "php_max": "7.4.11",
+        "php_max": "",
         "parameters": "",
         "php_excludes": ""
     },

@@ -800,8 +800,6 @@ class ReleaseHandler implements CommandHandlerInterface
         $major   = '2';
         $entry   = 'php_max';
         $names   = array(
-            'xdebug_clear_aggr_profiling_data'      => ExtensionFactory::LATEST_PHP_7_4,
-            'xdebug_dump_aggr_profiling_data'       => ExtensionFactory::LATEST_PHP_7_4,
             'xdebug_get_declared_vars'              => ExtensionFactory::LATEST_PHP_7_4,
             'xdebug_get_formatted_function_stack'   => ExtensionFactory::LATEST_PHP_7_4,
         );
