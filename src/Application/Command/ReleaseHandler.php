@@ -513,15 +513,6 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
-        $refName = 'Memcached';
-        $ext     = 'classes';
-        $major   = '';
-        $entry   = 'php_max';
-        $names   = array(
-            'MemcachedServer'                       => ExtensionFactory::LATEST_PHP_7_4,
-        );
-        $latest[] = array($refName, $ext, $major, $entry, $names);
-
         $refName = 'Mysqli';
         $ext     = 'functions';
         $major   = '';

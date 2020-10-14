@@ -36,4 +36,21 @@ use Bartlett\Tests\CompatInfoDb\Reference\GenericTest;
  */
 class MemcachedExtensionTest extends GenericTest
 {
+    /**
+     * Sets up the shared fixture.
+     *
+     * @return void
+     */
+    public static function setUpBeforeClass(): void
+    {
+        self::$optionalcfgs = [
+            // requires HAVE_MEMCACHED_SASL
+            'memcached.use_sasl',
+            // requires HAVE_MEMCACHED_SESSION
+            'memcached.sess_binary',
+            'memcached.sess_remove_failed',
+        ];
+
+        parent::setUpBeforeClass();
+    }
 }
