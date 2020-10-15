@@ -75,4 +75,4 @@ composer require bartlett/php-compatinfo-db
 
 ## License
 
-This project is licensed under the BSD-3-Clause License - see the [LICENSE](https://github.com/llaville/php-compatinfo-db/blob/master/LICENSE) file for details
+This project is license under the BSD-3-Clause License - see the [LICENSE](https://github.com/llaville/php-compatinfo-db/blob/master/LICENSE) file for details
