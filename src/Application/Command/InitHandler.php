@@ -188,6 +188,7 @@ class InitHandler implements CommandHandlerInterface
                 'releases'   => array('', '70', '71'),
             ),
             'curl' => array(
+                'constants'  => array('', '70'),
                 'functions'  => array('', '71'),
                 'releases'   => array('', '70', '71'),
             ),
