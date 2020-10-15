@@ -538,5 +538,15 @@
         "php_max": "",
         "php_excludes": "",
         "lib_curl": "~7.46.0"
+    },
+    {
+        "ext_name_fk": 9,
+        "name": "CURLE_SSL_PINNEDPUBKEYNOTMATCH",
+        "ext_min": "7.0.13RC1",
+        "ext_max": "",
+        "php_min": "7.0.13RC1",
+        "php_max": "",
+        "php_excludes": "",
+        "lib_curl": "~7.39.0"
     }
 ]
