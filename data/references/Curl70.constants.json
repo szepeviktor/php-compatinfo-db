@@ -548,5 +548,15 @@
         "php_max": "",
         "php_excludes": "",
         "lib_curl": "~7.39.0"
+    },
+    {
+        "ext_name_fk": 9,
+        "name": "CURLE_SSL_CACERT_BADFILE",
+        "ext_min": "7.0.7RC1",
+        "ext_max": "",
+        "php_min": "7.0.7RC1",
+        "php_max": "",
+        "php_excludes": "",
+        "lib_curl": "~7.16.0"
     }
 ]
