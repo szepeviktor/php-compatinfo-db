@@ -510,7 +510,7 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
     {
         if (self::REF_ELEMENT_INI == $refElementType) {
             $this->assertFalse(
-                ini_get($element),
+                (false !== ini_get($element)),
                 "INI '$element', found in Reference ($min,$max), exists."
             );
 
