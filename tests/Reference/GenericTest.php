@@ -937,7 +937,7 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
      * @group  reference
      * @return void
      */
-    public function _testGetClassesFromExtension($name)
+    public function testGetClassesFromExtension($name)
     {
         static $obj;
         static $dict;

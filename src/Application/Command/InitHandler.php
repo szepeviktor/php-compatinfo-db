@@ -233,6 +233,7 @@ class InitHandler implements CommandHandlerInterface
                 'releases'   => array('', '70', '71'),
             ),
             'hash' => array(
+                'classes'    => array('72'),
                 'functions'  => array('', '71', '72'),
             ),
             'haru' => array(
