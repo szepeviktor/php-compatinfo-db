@@ -208,6 +208,14 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
             $obj = new ExtensionFactory($this->extension);
         }
 
+        // hack(s) for compatibility reason in extension version test (see checkValuesFromReference)
+        if ('hash' === $obj->getName()) {
+            if (version_compare(PHP_VERSION, '7.3.0alpha3', 'lt')) {
+                // @see https://github.com/php/php-src/commit/3f96f01e9e4d50f47aa89da03853201304a58bba
+                $extVersion = '1.0';
+            }
+        }
+
         if ('testGetIniEntriesFromReference' === $methodName) {
             $refElementType = self::REF_ELEMENT_INI;
             $elements = $obj->getIniEntries();
@@ -254,6 +262,10 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
         }
 
         foreach ($elements as $name => $range) {
+            if (isset($extVersion)) {
+                $range['ext.min'] = $extVersion;
+            }
+
             if (!empty($range['optional'])) {
                 self::${$opt}[] = $name;
                 continue;
