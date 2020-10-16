@@ -203,6 +203,9 @@ class SocketsExtensionTest extends GenericTest
             'IPV6_MULTICAST_LOOP',
             'IPPROTO_IPV6',
             'IPV6_UNICAST_HOPS',
+            // requires HAVE_AI_IDN
+            'AI_IDN',
+            'AI_CANONIDN',
         );
         self::$optionalconstants = array_merge(self::$optionalconstants, $tmp);
 
