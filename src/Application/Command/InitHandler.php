@@ -282,6 +282,9 @@ class InitHandler implements CommandHandlerInterface
                 'const'      => array('1', '2', '5', '70'),
                 'methods'    => array('1', '2', '5', '70', '71'),
             ),
+            'json' => array(
+                'constants'  => array('', '70', '71', '72'),
+            ),
             'jsmin' => array(
                 'constants'  => array(''),
                 'functions'  => array(''),

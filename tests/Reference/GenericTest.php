@@ -219,6 +219,11 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
                 // @see https://github.com/php/php-src/commit/d6ccaef3e683976e6141b90ee1e315113f4a7baa
                 $extVersion = '1.0.5';
             }
+        } elseif ('json') {
+            if (version_compare(PHP_VERSION, '7.4.0beta2')) {
+                // @see https://github.com/php/php-src/commit/dee243d475b088189862d30755aac7bb9cdd61b3
+                $extVersion = '1.6.0';
+            }
         }
 
         if ('testGetIniEntriesFromReference' === $methodName) {
