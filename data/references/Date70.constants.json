@@ -1,0 +1,11 @@
+[
+    {
+        "ext_name_fk": 10,
+        "name": "DATE_RFC7231",
+        "ext_min": "7.0.19RC1",
+        "ext_max": "",
+        "php_min": "7.0.19RC1",
+        "php_max": "",
+        "php_excludes": ""
+    }
+]
