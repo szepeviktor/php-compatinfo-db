@@ -1,0 +1,11 @@
+[
+    {
+        "ext_name_fk": 78,
+        "name": "PASSWORD_ARGON2ID",
+        "ext_min": "7.3.0alpha3",
+        "ext_max": "",
+        "php_min": "7.3.0alpha3",
+        "php_max": "",
+        "php_excludes": ""
+    }
+]

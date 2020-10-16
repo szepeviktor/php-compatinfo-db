@@ -209,6 +209,12 @@ class StandardExtensionTest extends GenericTest
                 'STREAM_IPPROTO_UDP',
                 'STREAM_IPPROTO_ICMP',
                 'STREAM_IPPROTO_RAW',
+                // requires HAVE_ARGON2LIB
+                'PASSWORD_ARGON2I',
+                'PASSWORD_ARGON2ID',
+                'PASSWORD_ARGON2_DEFAULT_MEMORY_COST',
+                'PASSWORD_ARGON2_DEFAULT_TIME_COST',
+                'PASSWORD_ARGON2_DEFAULT_THREADS',
             );
         }
 

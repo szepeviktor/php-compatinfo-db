@@ -155,7 +155,7 @@ class InitHandler implements CommandHandlerInterface
             ),
             'standard' => array(
                 'classes'    => array('4', '5', '7'),
-                'constants'  => array('4', '5', '7', '71'),
+                'constants'  => array('4', '5', '7', '71', '72', '73'),
                 'functions'  => array('4', '5', '7', '71', '72', '73', '74', '80'),
                 'iniEntries' => array('4', '5', '7', '71', '74'),
                 'releases'   => array('4', '5', '7', '72', '73', '74', '80'),
