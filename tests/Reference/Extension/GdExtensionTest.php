@@ -62,6 +62,8 @@ class GdExtensionTest extends GenericTest
             'imagepstext',
             // requires HAVE_GD_XPM (linux only)
             'imagecreatefromxpm',
+            // requires HAVE_GD_TGA
+            'imagecreatefromtga',
         );
         if (defined('GD_BUNDLED') && ! GD_BUNDLED) {
             self::$optionalfunctions[] = 'imageantialias';
