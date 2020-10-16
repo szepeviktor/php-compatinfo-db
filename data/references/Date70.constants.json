@@ -7,5 +7,14 @@
         "php_min": "7.0.19RC1",
         "php_max": "",
         "php_excludes": ""
+    },
+    {
+        "ext_name_fk": 10,
+        "name": "DATE_RFC3339_EXTENDED",
+        "ext_min": "7.0.0alpha1",
+        "ext_max": "",
+        "php_min": "7.0.0alpha1",
+        "php_max": "",
+        "php_excludes": ""
     }
 ]
