@@ -545,6 +545,7 @@ class InitHandler implements CommandHandlerInterface
                 'const'      => array('1'),
             ),
             'zlib' => array(
+                'constants'  => array('', '70'),
                 'functions'  => array('', '72'),
                 'releases'   => array(''),
             ),
