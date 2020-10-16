@@ -309,6 +309,9 @@ class ReferenceCollection
         if (!isset($rec['lib_curl'])) {
             $rec['lib_curl'] = '';
         }
+        if (!isset($rec['lib_libxml'])) {
+            $rec['lib_libxml'] = '';
+        }
 
         if (is_array($row)) {
             if ($row == $rec) {
@@ -413,6 +416,7 @@ class ReferenceCollection
             ' php_excludes VARCHAR(255), ' .
             ' optional INTEGER, ' .
             ' lib_curl VARCHAR(16), ' .
+            ' lib_libxml VARCHAR(16), ' .
             ' PRIMARY KEY (ext_name_fk, name))'
         );
         $this->dbal->exec(
@@ -468,8 +472,8 @@ class ReferenceCollection
         );
         $this->stmtConstants = $this->dbal->prepare(
             'REPLACE INTO ' . $tblConstants .
-            ' (ext_name_fk, name, ext_min, ext_max, php_min, php_max, deprecated, php_excludes, optional, lib_curl)' .
-            ' VALUES (:ext_name_fk, :name, :ext_min, :ext_max, :php_min, :php_max, :deprecated, :php_excludes, :optional, :lib_curl)'
+            ' (ext_name_fk, name, ext_min, ext_max, php_min, php_max, deprecated, php_excludes, optional, lib_curl, lib_libxml)' .
+            ' VALUES (:ext_name_fk, :name, :ext_min, :ext_max, :php_min, :php_max, :deprecated, :php_excludes, :optional, :lib_curl, :lib_libxml)'
         );
         $this->stmtClassConstant = $this->dbal->prepare(
             'REPLACE INTO ' . $tblClassConst .
@@ -533,7 +537,8 @@ class ReferenceCollection
             'SELECT' .
             ' ext_name_fk, name, ext_min, ext_max, php_min, php_max,' .
             ' deprecated,' .
-            ' php_excludes, optional, lib_curl' .
+            ' php_excludes, optional,' .
+            ' lib_curl, lib_libxml' .
             ' FROM ' . $tblConstants .
             ' WHERE ext_name_fk = :ext_name_fk AND name = :name COLLATE NOCASE'
         );

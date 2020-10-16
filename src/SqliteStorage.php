@@ -217,7 +217,8 @@ class SqliteStorage
             ' deprecated,' .
             ' php_excludes as "php.excludes",' .
             ' optional,' .
-            ' lib_curl' .
+            ' lib_curl,' .
+            ' lib_libxml' .
             ' FROM bartlett_compatinfo_constants c,  bartlett_compatinfo_extensions e' .
             ' WHERE c.ext_name_fk = e.id AND e.name = :name COLLATE NOCASE'
         );
