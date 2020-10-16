@@ -50,6 +50,12 @@ class LdapExtensionTest extends GenericTest
             'ldap_set_rebind_proc',
         );
 
+        self::$optionalconstants = [
+            // RFC 3829
+            'LDAP_CONTROL_AUTHZID_REQUEST',
+            'LDAP_CONTROL_AUTHZID_RESPONSE',
+        ];
+
         parent::setUpBeforeClass();
     }
 }

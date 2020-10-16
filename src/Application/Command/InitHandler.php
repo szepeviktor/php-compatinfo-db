@@ -291,7 +291,7 @@ class InitHandler implements CommandHandlerInterface
                 'releases'   => array('', '1', '2'),
             ),
             'ldap' => array(
-                'constants'  => array('', '70', '71'),
+                'constants'  => array('', '70', '71', '72'),
                 'functions'  => array('', '72', '73'),
                 'releases'   => array('', '70', '71'),
             ),
