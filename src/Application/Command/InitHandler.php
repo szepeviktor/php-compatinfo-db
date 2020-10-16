@@ -372,6 +372,7 @@ class InitHandler implements CommandHandlerInterface
                 'functions'  => array('', '70'),
             ),
             'pcntl' => array(
+                'constants' => array('', '70', '72'),
                 'functions' => array('', '70', '71', '74'),
             ),
             'posix' => array(

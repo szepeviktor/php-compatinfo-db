@@ -36,4 +36,22 @@ use Bartlett\Tests\CompatInfoDb\Reference\GenericTest;
  */
 class PcntlExtensionTest extends GenericTest
 {
+    /**
+     * Sets up the shared fixture.
+     *
+     * @return void
+     */
+    public static function setUpBeforeClass(): void
+    {
+        self::$optionalconstants = [
+            // requires HAVE_WCONTINUED
+            'WCONTINUED',
+        ];
+        self::$optionalfunctions = [
+            // requires HAVE_WCONTINUED
+            'pcntl_wifcontinued',
+        ];
+
+        parent::setUpBeforeClass();
+    }
 }
