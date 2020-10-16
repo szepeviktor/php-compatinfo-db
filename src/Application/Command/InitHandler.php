@@ -344,6 +344,7 @@ class InitHandler implements CommandHandlerInterface
                 'methods'    => array(''),
             ),
             'mysqli' => array(
+                'constants'  => array('', '72'),
                 'releases'   => array('', '70', '71'),
             ),
             'oci8' => array(
