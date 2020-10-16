@@ -377,6 +377,7 @@ class InitHandler implements CommandHandlerInterface
                 'functions' => array('', '70', '71', '74'),
             ),
             'posix' => array(
+                'constants' => array('', '70'),
                 'functions' => array('', '70'),
             ),
             'pdflib' => array(
