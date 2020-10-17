@@ -121,6 +121,10 @@ class CoreExtensionTest extends GenericTest
             'self',
         );
 
+        self::$optionalmethods = [
+            'Closure::__invoke'
+        ];
+
         parent::setUpBeforeClass();
     }
 }
