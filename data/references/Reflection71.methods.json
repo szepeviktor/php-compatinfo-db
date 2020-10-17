@@ -1,0 +1,12 @@
+[
+    {
+        "ext_name_fk": 64,
+        "class_name": "ReflectionNamedType",
+        "name": "getName",
+        "static": "false",
+        "ext_min": "7.1.0beta3",
+        "ext_max": "",
+        "php_min": "7.1.0beta3",
+        "php_max": ""
+    }
+]
