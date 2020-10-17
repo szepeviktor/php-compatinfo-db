@@ -990,7 +990,7 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
      * @group  reference
      * @return void
      */
-    public function _testGetClassMethodsFromExtension($name)
+    public function testGetClassMethodsFromExtension($name)
     {
         static $obj;
         static $nonStaticMethods;
@@ -1003,6 +1003,12 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
             $staticMethods    = $obj->getClassStaticMethods();
             $this->assertTrue(is_array($staticMethods));
         }
+
+        $this->assertNotEquals(
+            0 ,
+            count($nonStaticMethods) + count($staticMethods),
+            'None method defined. Checks if `*.methods.json` file exists.'
+        );
 
         list ($classname, $name) = explode('::', $name);
 
