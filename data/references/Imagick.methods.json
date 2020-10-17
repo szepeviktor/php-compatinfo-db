@@ -5588,5 +5588,16 @@
         "php_min": "5.4.0",
         "php_max": "",
         "lib_imagemagick": ">6.9.2"
+    },
+    {
+        "ext_name_fk": 29,
+        "class_name": "Imagick",
+        "name": "optimizeimagetransparency",
+        "static": false,
+        "ext_min": "3.4.4RC1",
+        "ext_max": "",
+        "php_min": "5.4.0",
+        "php_max": "",
+        "lib_imagemagick": ">6.8.6"
     }
 ]
