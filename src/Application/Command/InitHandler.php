@@ -209,6 +209,7 @@ class InitHandler implements CommandHandlerInterface
             ),
             'fileinfo' => array(
                 'constants'  => array('', '72'),
+                'methods'    => array(''),
             ),
             'filter' => array(
                 'constants'  => array('', '70', '71'),
