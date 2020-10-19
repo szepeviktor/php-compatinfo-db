@@ -441,6 +441,9 @@ class InitHandler implements CommandHandlerInterface
             'shmop' => array(
                 'releases'   => array('', '70', '71'),
             ),
+            'snmp' => array(
+                'releases'   => array(''),
+            ),
             'soap' => array(
                 'methods'    => array(''),
                 'releases'   => array('', '70', '71'),
