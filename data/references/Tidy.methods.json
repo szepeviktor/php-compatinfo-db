@@ -268,5 +268,15 @@
         "ext_max": "",
         "php_min": "5.0.1",
         "php_max": ""
+    },
+    {
+        "ext_name_fk": 85,
+        "class_name": "tidy",
+        "name": "getOptDoc",
+        "static": false,
+        "ext_min": "0.7.0",
+        "ext_max": "",
+        "php_min": "5.1.0",
+        "php_max": ""
     }
 ]
