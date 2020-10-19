@@ -2588,5 +2588,45 @@
         "ext_max": "",
         "php_min": "5.2.3",
         "php_max": ""
+    },
+    {
+        "ext_name_fk": 72,
+        "class_name": "SolrInputDocument",
+        "name": "getVersion",
+        "static": "false",
+        "ext_min": "0.9.11",
+        "ext_max": "",
+        "php_min": "5.2.3",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 72,
+        "class_name": "SolrInputDocument",
+        "name": "setVersion",
+        "static": "false",
+        "ext_min": "0.9.11",
+        "ext_max": "",
+        "php_min": "5.2.3",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 72,
+        "class_name": "SolrInputDocument",
+        "name": "updateField",
+        "static": "false",
+        "ext_min": "0.9.11",
+        "ext_max": "",
+        "php_min": "5.2.3",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 72,
+        "class_name": "SolrClient",
+        "name": "sendUpdateStream",
+        "static": "false",
+        "ext_min": "0.9.11",
+        "ext_max": "",
+        "php_min": "5.2.3",
+        "php_max": ""
     }
 ]
