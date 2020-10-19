@@ -11,6 +11,26 @@
     },
     {
         "ext_name_fk": "64",
+        "class_name": "ReflectionClass",
+        "name": "getReflectionConstants",
+        "static": "false",
+        "ext_min": "7.1.0alpha1",
+        "ext_max": "",
+        "php_min": "7.1.0alpha1",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": "64",
+        "class_name": "ReflectionClass",
+        "name": "getReflectionConstant",
+        "static": "false",
+        "ext_min": "7.1.0alpha1",
+        "ext_max": "",
+        "php_min": "7.1.0alpha1",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": "64",
         "class_name": "ReflectionClassConstant",
         "name": "__construct",
         "static": "false",
