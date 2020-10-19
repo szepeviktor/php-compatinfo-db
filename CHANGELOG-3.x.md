@@ -22,6 +22,7 @@ replace old `ContainerService` that was introduced in version 2.13
 
 ### Fixed
 
+- [#13](https://github.com/llaville/php-compatinfo-db/issues/13) Missing Reference entries not detected by standard suite tests
 - [#48](https://github.com/llaville/php-compatinfo-db/issues/48) GenericTest - checkValuesFromReference failed to proceed good assertions
 - [#55](https://github.com/llaville/php-compatinfo-db/issues/55) Wrong assertion results when method checks
 - [#57](https://github.com/llaville/php-compatinfo-db/issues/57) GenericTest - function_exists failed to proceed expected assertion with Polyfills
