@@ -212,7 +212,7 @@ class InitHandler implements CommandHandlerInterface
                 'methods'    => array(''),
             ),
             'filter' => array(
-                'constants'  => array('', '70', '71'),
+                'constants'  => array('', '70', '71', '73'),
                 'releases'   => array('', '70', '71'),
             ),
             'ftp' => array(
