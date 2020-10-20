@@ -101,6 +101,8 @@ class HashExtensionTest extends GenericTest
             }
         }
 
+        array_push(self::$ignoredconstants, 'MHASH_CRC32C');
+
         parent::setUpBeforeClass();
     }
 }
