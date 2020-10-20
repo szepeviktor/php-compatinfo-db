@@ -393,7 +393,7 @@ class InitHandler implements CommandHandlerInterface
                 'methods'    => array('2', '3'),
             ),
             'pgsql' => array(
-                'constants'  => array('', '71'),
+                'constants'  => array('', '71', '73'),
                 'releases'   => array('', '70', '71'),
             ),
             'pthreads' => array(
