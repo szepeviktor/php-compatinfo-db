@@ -209,14 +209,19 @@ class StandardExtensionTest extends GenericTest
                 'STREAM_IPPROTO_UDP',
                 'STREAM_IPPROTO_ICMP',
                 'STREAM_IPPROTO_RAW',
-                // requires HAVE_ARGON2LIB
-                'PASSWORD_ARGON2I',
-                'PASSWORD_ARGON2ID',
-                'PASSWORD_ARGON2_DEFAULT_MEMORY_COST',
-                'PASSWORD_ARGON2_DEFAULT_TIME_COST',
-                'PASSWORD_ARGON2_DEFAULT_THREADS',
             );
         }
+
+        // requires HAVE_ARGON2LIB
+        array_push(
+            self::$optionalconstants,
+            'PASSWORD_ARGON2I',
+            'PASSWORD_ARGON2ID',
+            'PASSWORD_ARGON2_DEFAULT_MEMORY_COST',
+            'PASSWORD_ARGON2_DEFAULT_TIME_COST',
+            'PASSWORD_ARGON2_DEFAULT_THREADS',
+            'PASSWORD_ARGON2_PROVIDER'
+        );
 
         // WARNING: strange to find it on PHP 7.2.x versions, while it supposed to appears since PHP 7.3.0alpha
         // probablt a GenericTest issue to fix (see also MbstringExtensionTest)
