@@ -375,7 +375,7 @@ class InitHandler implements CommandHandlerInterface
             ),
             'pcre' => array(
                 'iniEntries' => array('', '70'),
-                'constants'  => array('', '70', '72'),
+                'constants'  => array('', '70', '72', '73'),
                 'functions'  => array('', '70'),
             ),
             'pcntl' => array(
