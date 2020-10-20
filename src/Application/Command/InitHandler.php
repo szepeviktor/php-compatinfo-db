@@ -316,6 +316,7 @@ class InitHandler implements CommandHandlerInterface
                 'methods'    => array('', '3'),
             ),
             'mbstring' => array(
+                'constants'  => array('', '73'),
                 'functions'  => array('', '72', '74'),
                 'iniEntries' => array('', '73', '74'),
                 'releases'   => array('', '70', '71', '72', '73'),
