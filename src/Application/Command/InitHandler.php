@@ -146,10 +146,10 @@ class InitHandler implements CommandHandlerInterface
     {
         $majorReleases = array(
             'core' => array(
-                'classes'    => array('4', '5', '7', '71', '73'),
+                'classes'    => array('4', '5', '7', '71', '73', '74'),
                 'constants'  => array('4', '5', '71'),
                 'functions'  => array('4', '5', '7', '73', '74', '80'),
-                'methods'    => array('5', '70', '72'),
+                'methods'    => array('5', '70', '72', '74'),
                 'iniEntries' => array('4', '5', '7', '71', '73', '74', '80'),
                 'interfaces' => array('5', '7', '72', '80'),
                 'releases'   => array('4', '5', '70', '71', '72', '73', '74', '80'),

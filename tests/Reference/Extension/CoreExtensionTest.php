@@ -122,7 +122,8 @@ class CoreExtensionTest extends GenericTest
         );
 
         self::$optionalmethods = [
-            'Closure::__invoke'
+            'Closure::__invoke',
+            'Generator::__wakeup',
         ];
 
         parent::setUpBeforeClass();
