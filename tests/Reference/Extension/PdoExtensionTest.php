@@ -36,4 +36,20 @@ use Bartlett\Tests\CompatInfoDb\Reference\GenericTest;
  */
 class PdoExtensionTest extends GenericTest
 {
+    /**
+     * Sets up the shared fixture.
+     *
+     * @return void
+     */
+    public static function setUpBeforeClass(): void
+    {
+        self::$optionalmethods = [
+            'PDO::__sleep',
+            'PDO::__wakeup',
+            'PDOStatement::__sleep',
+            'PDOStatement::__wakeup',
+        ];
+
+        parent::setUpBeforeClass();
+    }
 }
