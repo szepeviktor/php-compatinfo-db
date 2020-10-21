@@ -7,5 +7,23 @@
         "php_min": "7.4.0beta1",
         "php_max": "",
         "php_excludes": ""
+    },
+    {
+        "ext_name_fk": 86,
+        "name": "T_COALESCE_EQUAL",
+        "ext_min": "7.4.0",
+        "ext_max": "",
+        "php_min": "7.4.0",
+        "php_max": "",
+        "php_excludes": ""
+    },
+    {
+        "ext_name_fk": 86,
+        "name": "T_FN",
+        "ext_min": "7.4.0",
+        "ext_max": "",
+        "php_min": "7.4.0",
+        "php_max": "",
+        "php_excludes": ""
     }
 ]
