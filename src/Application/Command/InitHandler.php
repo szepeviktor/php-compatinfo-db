@@ -476,7 +476,7 @@ class InitHandler implements CommandHandlerInterface
             ),
             'sqlite3' => array(
                 'constants'  => array('', '71'),
-                'methods'    => array('', '80'),
+                'methods'    => array('', '74', '80'),
                 'releases'   => array('', '70', '71', '80'),
                 'const'      => array('80'),
             ),
