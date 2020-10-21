@@ -500,6 +500,7 @@ class InitHandler implements CommandHandlerInterface
             ),
             'tidy' => array(
                 'releases'   => array('', '70', '71'),
+                'constants'  => array('', '74'),
                 'methods'    => array(''),
             ),
             'tokenizer' => array(
