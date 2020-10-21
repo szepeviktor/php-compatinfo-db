@@ -633,6 +633,15 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
+        $refName = 'Reflection';
+        $ext     = 'methods';
+        $major   = '71';
+        $entry   = 'php_max';
+        $names   = array(
+            'ReflectionClassConstant::export'       => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
         $refName = 'Session';
         $ext     = 'functions';
         $major   = '';
