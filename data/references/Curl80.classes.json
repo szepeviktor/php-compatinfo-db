@@ -1,0 +1,26 @@
+[
+    {
+        "ext_name_fk": 9,
+        "name": "CurlHandle",
+        "ext_min": "8.0.0alpha1",
+        "ext_max": "",
+        "php_min": "8.0.0alpha1",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 9,
+        "name": "CurlMultiHandle",
+        "ext_min": "8.0.0alpha1",
+        "ext_max": "",
+        "php_min": "8.0.0alpha1",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 9,
+        "name": "CurlShareHandle",
+        "ext_min": "8.0.0alpha1",
+        "ext_max": "",
+        "php_min": "8.0.0alpha1",
+        "php_max": ""
+    }
+]
