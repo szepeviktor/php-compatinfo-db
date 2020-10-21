@@ -36,4 +36,32 @@ use Bartlett\Tests\CompatInfoDb\Reference\GenericTest;
  */
 class SplExtensionTest extends GenericTest
 {
+    /**
+     * Sets up the shared fixture.
+     *
+     * @return void
+     */
+    public static function setUpBeforeClass(): void
+    {
+        self::$ignoredmethods = [
+            'ArrayObject::__unserialize',
+            'ArrayObject::__serialize',
+            'ArrayObject::__debugInfo',
+            'ArrayIterator::__unserialize',
+            'ArrayIterator::__serialize',
+            'ArrayIterator::__debugInfo',
+            'SplFileInfo::__debugInfo',
+            'SplDoublyLinkedList::__debugInfo',
+            'SplDoublyLinkedList::__unserialize',
+            'SplDoublyLinkedList::__serialize',
+            'SplHeap::__debugInfo',
+            'SplPriorityQueue::__debugInfo',
+            'SplObjectStorage::__debugInfo',
+            'SplObjectStorage::__unserialize',
+            'SplObjectStorage::__serialize',
+            'MultipleIterator::__debugInfo',
+        ];
+
+        parent::setUpBeforeClass();
+    }
 }

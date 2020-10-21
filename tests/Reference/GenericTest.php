@@ -1001,6 +1001,10 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
         static $nonStaticMethods;
         static $staticMethods;
 
+        if (in_array($name, self::$ignoredmethods)) {
+            return;
+        }
+        
         if (!is_object($obj) || $obj->getName() !== $this->extension) {
             $obj = new ExtensionFactory($this->extension);
             $nonStaticMethods = $obj->getClassMethods();
