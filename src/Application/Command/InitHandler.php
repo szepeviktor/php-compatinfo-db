@@ -209,6 +209,10 @@ class InitHandler implements CommandHandlerInterface
                 'methods'    => array('', '80'),
                 'releases'   => array(''),
             ),
+            'enchant' => array(
+                'classes'    => array('80'),
+                'constants'  => array('', '80'),
+            ),
             'fileinfo' => array(
                 'constants'  => array('', '72'),
                 'methods'    => array(''),
