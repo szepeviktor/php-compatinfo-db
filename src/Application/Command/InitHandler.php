@@ -370,7 +370,8 @@ class InitHandler implements CommandHandlerInterface
                 'methods'    => array('', '3'),
             ),
             'openssl' => array(
-                'constants'  => array('', '71'),
+                'classes'    => array('80'),
+                'constants'  => array('', '71', '80'),
                 'functions'  => array('', '72', '73', '74'),
                 'releases'   => array('', '70', '71'),
             ),
