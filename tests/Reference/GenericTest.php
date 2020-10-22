@@ -229,6 +229,11 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
                 // @see https://github.com/php/php-src/commit/70f41d1d9cb03f76f73e7a6099bfc7ce0c2b2701
                 $extVersion = '0.1';
             }
+        } elseif ('enchant' === $obj->getName()) {
+            if (version_compare(PHP_VERSION, '7.0.26RC1')) {
+                // @see https://github.com/php/php-src/commit/fb0902143291c8b605997a6b2a8f8717289a44d1
+                $extVersion = '1.1.0';
+            }
         }
 
         if ('testGetIniEntriesFromReference' === $methodName) {
@@ -1004,7 +1009,7 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
         if (in_array($name, self::$ignoredmethods)) {
             return;
         }
-        
+
         if (!is_object($obj) || $obj->getName() !== $this->extension) {
             $obj = new ExtensionFactory($this->extension);
             $nonStaticMethods = $obj->getClassMethods();
