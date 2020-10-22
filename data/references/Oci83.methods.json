@@ -42,7 +42,7 @@
     {
         "ext_name_fk": 108,
         "class_name": "OCICollection",
-        "name": "getelem",
+        "name": "getElem",
         "static": "false",
         "ext_min": "3.0.0",
         "ext_max": "",

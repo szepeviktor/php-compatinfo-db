@@ -42,7 +42,7 @@
     {
         "ext_name_fk": 108,
         "class_name": "OCI-Collection",
-        "name": "getelem",
+        "name": "getElem",
         "static": "false",
         "ext_min": "1.0",
         "ext_max": "",
