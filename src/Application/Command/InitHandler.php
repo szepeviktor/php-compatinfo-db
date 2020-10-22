@@ -425,8 +425,8 @@ class InitHandler implements CommandHandlerInterface
                 'methods'    => array('', '2', '3', '4'),
             ),
             'reflection' => array(
-                'classes'    => ['', '70', '71', '74'],
-                'methods'    => ['', '70', '71', '72', '74'],
+                'classes'    => ['', '70', '71', '74', '80'],
+                'methods'    => ['', '70', '71', '72', '74', '80'],
             ),
             'redis' => array(
                 'classes'    => array('2', '5'),

@@ -644,6 +644,15 @@ class ReleaseHandler implements CommandHandlerInterface
 
         $refName = 'Reflection';
         $ext     = 'methods';
+        $major   = '70';
+        $entry   = 'php_max';
+        $names   = array(
+            'ReflectionType::isBuiltin'             => ExtensionFactory::LATEST_PHP_7_4,
+        );
+        $latest[] = array($refName, $ext, $major, $entry, $names);
+
+        $refName = 'Reflection';
+        $ext     = 'methods';
         $major   = '71';
         $entry   = 'php_max';
         $names   = array(
