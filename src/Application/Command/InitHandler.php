@@ -218,7 +218,7 @@ class InitHandler implements CommandHandlerInterface
                 'methods'    => array('', '80'),
             ),
             'filter' => array(
-                'constants'  => array('', '70', '71', '73'),
+                'constants'  => array('', '70', '71', '73', '80'),
                 'releases'   => array('', '70', '71'),
             ),
             'ftp' => array(
