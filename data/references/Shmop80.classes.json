@@ -1,0 +1,10 @@
+[
+    {
+        "ext_name_fk": 67,
+        "name": "Shmop",
+        "ext_min": "8.0.0alpha2",
+        "ext_max": "",
+        "php_min": "8.0.0alpha2",
+        "php_max": ""
+    }
+]

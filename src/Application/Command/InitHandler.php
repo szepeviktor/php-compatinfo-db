@@ -450,6 +450,7 @@ class InitHandler implements CommandHandlerInterface
                 'releases'   => array('', '70', '71'),
             ),
             'shmop' => array(
+                'classes'    => array('80'),
                 'releases'   => array('', '70', '71'),
             ),
             'snmp' => array(
