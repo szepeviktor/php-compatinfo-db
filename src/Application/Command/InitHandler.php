@@ -524,7 +524,9 @@ class InitHandler implements CommandHandlerInterface
                 'methods'    => array(''),
             ),
             'tokenizer' => array(
-                'constants'  => array('', '70', '74')
+                'classes'    => array('80'),
+                'constants'  => array('', '70', '74', '80'),
+                'methods'    => array('80'),
             ),
             'uopz' => array(
                 'constants'  => array('2'),
