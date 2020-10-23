@@ -551,6 +551,9 @@ class InitHandler implements CommandHandlerInterface
                 'iniEntries' => array('1', '2'),
                 'releases'   => array('1', '2'),
             ),
+            'xml' => array(
+                'classes'    => array('80'),
+            ),
             'xmldiff' => array(
                 'classes'    => array(''),
                 'releases'   => array('', '1'),
