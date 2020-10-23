@@ -504,6 +504,9 @@ class InitHandler implements CommandHandlerInterface
             'sysvmsg' => array(
                 'classes'    => array('80'),
             ),
+            'sysvsem' => array(
+                'classes'    => array('80'),
+            ),
             'svn' => array(
                 'classes'    => array(''),
                 'constants'  => array('', '1'),
