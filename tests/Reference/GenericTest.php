@@ -73,57 +73,6 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
     protected static $ignoredmethods       = array();
     protected static $ignoredconsts        = array();
 
-    // References fully documented
-    protected static $extensions =  array(
-        'amqp',
-        'date',
-        'exif',
-        'gender',
-        'geoip',
-        'gmp',
-        'haru',
-        'htscanner',
-        'imagick',
-        'igbinary',
-        'inclued',
-        'intl',
-        'jsmin',
-        'ldap',
-        'lzf',
-        'mailparse',
-        'mongo',
-        'msgpack',
-        'mysqli',
-        'oauth',
-        'openssl',
-        'pdflib',
-        'pgsql',
-        'pthreads',
-        'rar',
-        'redis',
-        'reflection',
-        'riak',
-        'soap',
-        'sockets',
-        'solr',
-        'sphinx',
-        'spl',
-        'sqlite3',
-        'ssh2',
-        'stomp',
-        'sync',
-        'tidy',
-        'uopz',
-        'uploadprogress',
-        'varnish',
-        'xdebug',
-        'xmldiff',
-        'xmlrpc',
-        'xsl',
-        'Zend OPcache',
-        'zip',
-    );
-
     /**
      * {@inheritDoc}
      */
@@ -704,7 +653,6 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
     {
         $elements = [];
 
-        if (in_array(self::$ext, self::$extensions)) {
             $extension = new \ReflectionExtension(self::$ext);
             $classes   = array_unique($extension->getClassNames());
 
@@ -722,7 +670,6 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
                     array_keys($class->getConstants())
                 );
             }
-        }
 
         foreach ($elements as $name) {
             yield [$name];
