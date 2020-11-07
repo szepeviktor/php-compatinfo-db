@@ -142,5 +142,185 @@
         "ext_max": "",
         "php_min": "5.2.0",
         "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_SUCCESS",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_FAILURE",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_HOST_LOOKUP_FAILURE",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_UNKNOWN_READ_FAILURE",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_PROTOCOL_ERROR",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_CLIENT_ERROR",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_SERVER_ERROR",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_WRITE_FAILURE",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_DATA_EXISTS",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_NOTSTORED",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_NOTFOUND",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_PARTIAL_READ",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_SOME_ERRORS",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_NO_SERVERS",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_END",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_ERRNO",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_BUFFERED",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_TIMEOUT",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_BAD_KEY_PROVIDED",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_CONNECTION_SOCKET_CREATE_FAILURE",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
     }
 ]
