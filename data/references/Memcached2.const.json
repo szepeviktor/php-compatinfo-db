@@ -736,5 +736,15 @@
         "ext_max": "",
         "php_min": "5.2.0",
         "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_REMOVE_FAILED_SERVERS",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": "",
+        "lib_libmemcached": "~0.49"
     }
 ]
