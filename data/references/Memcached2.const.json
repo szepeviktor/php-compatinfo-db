@@ -746,5 +746,14 @@
         "php_min": "5.2.0",
         "php_max": "",
         "lib_libmemcached": "~0.49"
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "LIBMEMCACHED_VERSION_HEX",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
     }
 ]
