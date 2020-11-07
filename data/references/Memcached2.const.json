@@ -565,5 +565,104 @@
         "ext_max": "",
         "php_min": "5.2.0",
         "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "HASH_DEFAULT",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "HASH_MD5",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "HASH_CRC",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "HASH_FNV1_64",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "HASH_FNV1A_64",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "HASH_FNV1_32",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "HASH_FNV1A_32",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "HASH_HSIEH",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "HASH_MURMUR",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "DISTRIBUTION_MODULA",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "DISTRIBUTION_CONSISTENT",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
     }
 ]
