@@ -765,5 +765,42 @@
         "php_min": "5.2.0",
         "php_max": "",
         "lib_libmemcached": "~1.0.18"
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_E2BIG",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_KEY_TOO_BIG",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_SERVER_TEMPORARILY_DISABLED",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "RES_SERVER_MEMORY_ALLOCATION_FAILURE",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": "",
+        "lib_libmemcached": "~1.0.8"
     }
 ]
