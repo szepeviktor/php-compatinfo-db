@@ -755,5 +755,15 @@
         "ext_max": "",
         "php_min": "5.2.0",
         "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_SERVER_TIMEOUT_LIMIT",
+        "ext_min": "2.2.0",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": "",
+        "lib_libmemcached": "~1.0.18"
     }
 ]
