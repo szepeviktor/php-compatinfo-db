@@ -334,10 +334,10 @@ class InitHandler implements CommandHandlerInterface
                 'releases'   => array(''),
             ),
             'memcached' => array(
-                'const'      => array(''),
+                'const'      => array('2', '3'),
                 'functions'  => array('3'),
                 'iniEntries' => array('', '3'),
-                'releases'   => array('', '3'),
+                'releases'   => array('', '2', '3'),
             ),
             'mongo' => array(
                 'classes'    => array('', '1'),

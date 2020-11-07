@@ -428,6 +428,7 @@ class ReferenceCollection
             ' optional INTEGER, ' .
             ' lib_imagemagick VARCHAR(16), ' .
             ' lib_zip VARCHAR(16), ' .
+            ' lib_libmemcached VARCHAR(16), ' .
             ' PRIMARY KEY (ext_name_fk, class_name, name))'
         );
         $this->stmtVersions = $this->dbal->prepare(
@@ -477,8 +478,8 @@ class ReferenceCollection
         );
         $this->stmtClassConstant = $this->dbal->prepare(
             'REPLACE INTO ' . $tblClassConst .
-            ' (ext_name_fk, class_name, name, ext_min, ext_max, php_min, php_max, deprecated, optional, lib_imagemagick, lib_zip)' .
-            ' VALUES (:ext_name_fk, :class_name, :name, :ext_min, :ext_max, :php_min, :php_max, :deprecated, :optional, :lib_imagemagick, :lib_zip)'
+            ' (ext_name_fk, class_name, name, ext_min, ext_max, php_min, php_max, deprecated, optional, lib_imagemagick, lib_zip, lib_libmemcached)' .
+            ' VALUES (:ext_name_fk, :class_name, :name, :ext_min, :ext_max, :php_min, :php_max, :deprecated, :optional, :lib_imagemagick, :lib_zip, :lib_libmemcached)'
         );
 
         $this->stmtRelease = $this->dbal->prepare(
@@ -521,7 +522,7 @@ class ReferenceCollection
             'SELECT' .
             ' ext_name_fk, class_name, name, ext_min, ext_max, php_min, php_max,'.
             ' deprecated,' .
-            ' optional, lib_imagemagick, lib_zip' .
+            ' optional, lib_imagemagick, lib_zip, lib_libmemcached' .
             ' FROM ' . $tblClassConst .
             ' WHERE ext_name_fk = :ext_name_fk AND class_name = :class_name AND name = :name COLLATE NOCASE'
         );

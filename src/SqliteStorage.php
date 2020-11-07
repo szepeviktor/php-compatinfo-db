@@ -184,7 +184,7 @@ class SqliteStorage
             ' e.name as "ext.name", ext_min as "ext.min", ext_max as "ext.max",' .
             ' php_min as "php.min", php_max as "php.max",' .
             ' deprecated,' .
-            ' optional, lib_imagemagick, lib_zip' .
+            ' optional, lib_imagemagick, lib_zip, lib_libmemcached' .
             ' FROM bartlett_compatinfo_const c,  bartlett_compatinfo_extensions e' .
             ' WHERE c.ext_name_fk = e.id AND e.name = :name COLLATE NOCASE'
         );
