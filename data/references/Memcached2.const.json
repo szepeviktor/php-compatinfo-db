@@ -412,5 +412,158 @@
         "ext_max": "",
         "php_min": "5.2.0",
         "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_COMPRESSION",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_PREFIX_KEY",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_HASH",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_DISTRIBUTION",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_BUFFER_WRITES",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_BINARY_PROTOCOL",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_NO_BLOCK",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_TCP_NODELAY",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_SOCKET_SEND_SIZE",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_SOCKET_RECV_SIZE",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_CONNECT_TIMEOUT",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_RETRY_TIMEOUT",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_SEND_TIMEOUT",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_RECV_TIMEOUT",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_POLL_TIMEOUT",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_CACHE_LOOKUPS",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
+    },
+    {
+        "ext_name_fk": 42,
+        "class_name": "Memcached",
+        "name": "OPT_SERVER_FAILURE_LIMIT",
+        "ext_min": "2.2.0b1",
+        "ext_max": "",
+        "php_min": "5.2.0",
+        "php_max": ""
     }
 ]
