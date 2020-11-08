@@ -1,7 +1,7 @@
 [
     {
         "ext_name_fk": 3,
-        "class_name": "APCuIterator",
+        "class_name": "APCUIterator",
         "name": "__construct",
         "static": false,
         "ext_min": "5.1.0",
@@ -11,7 +11,7 @@
     },
     {
         "ext_name_fk": 3,
-        "class_name": "APCuIterator",
+        "class_name": "APCUIterator",
         "name": "getTotalHits",
         "static": false,
         "ext_min": "5.1.0",
@@ -21,7 +21,7 @@
     },
     {
         "ext_name_fk": 3,
-        "class_name": "APCuIterator",
+        "class_name": "APCUIterator",
         "name": "getTotalSize",
         "static": false,
         "ext_min": "5.1.0",
@@ -31,7 +31,7 @@
     },
     {
         "ext_name_fk": 3,
-        "class_name": "APCuIterator",
+        "class_name": "APCUIterator",
         "name": "getTotalCount",
         "static": false,
         "ext_min": "5.1.0",

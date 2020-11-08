@@ -1,7 +1,7 @@
 [
     {
         "ext_name_fk": 3,
-        "name": "APCuIterator",
+        "name": "APCUIterator",
         "ext_min": "5.1.0",
         "ext_max": "",
         "php_min": "7.0.0",
