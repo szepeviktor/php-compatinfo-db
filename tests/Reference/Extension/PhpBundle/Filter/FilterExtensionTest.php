@@ -62,6 +62,11 @@ class FilterExtensionTest extends GenericTest
             'input_get_args',
         );
 
+        self::$ignoredconstants = [
+            // exists on PHP 7.x even if https://github.com/php/php-src/commit/f13d0a72d5cf92785c91ffc33c27df3df3f8e96e
+            'FILTER_VALIDATE_BOOL',
+        ];
+
         parent::setUpBeforeClass();
     }
 }
