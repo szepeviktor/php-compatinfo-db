@@ -1435,7 +1435,7 @@
         "name": "fgetss",
         "static": false,
         "ext_min": "5.1.0",
-        "ext_max": "7.4.11",
+        "ext_max": "7.4.12",
         "php_min": "5.1.0",
         "php_max": ""
     },

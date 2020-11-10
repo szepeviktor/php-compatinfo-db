@@ -45,7 +45,7 @@
         "ext_min": "4.0.1",
         "ext_max": "",
         "php_min": "4.0.1",
-        "php_max": "7.4.11",
+        "php_max": "7.4.12",
         "parameters": "",
         "php_excludes": ""
     }

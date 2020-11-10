@@ -34,7 +34,7 @@ Version 3.0.0 supports following PHP versions :
 * PHP 7.1.33
 * PHP 7.2.34
 * PHP 7.3.24
-* PHP 7.4.11
+* PHP 7.4.12
 * PHP 8.0.0
 
 Currently, 108 extensions referenceY in the database.

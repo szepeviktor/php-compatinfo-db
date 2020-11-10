@@ -157,7 +157,7 @@
         "ext_min": "2.0.0beta1",
         "ext_max": "",
         "php_min": "4.3.0",
-        "php_max": "7.4.11"
+        "php_max": "7.4.12"
     },
     {
         "ext_name_fk": 91,
@@ -333,7 +333,7 @@
         "ext_min": "2.4.0beta1",
         "ext_max": "",
         "php_min": "5.4.0",
-        "php_max": "7.4.11"
+        "php_max": "7.4.12"
     },
     {
         "ext_name_fk": 91,

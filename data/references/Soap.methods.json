@@ -5,7 +5,7 @@
         "name": "SoapClient",
         "static": false,
         "ext_min": "5.0.0",
-        "ext_max": "7.4.11",
+        "ext_max": "7.4.12",
         "php_min": "5.0.0",
         "php_max": ""
     },
@@ -155,7 +155,7 @@
         "name": "SoapFault",
         "static": false,
         "ext_min": "5.0.0",
-        "ext_max": "7.4.11",
+        "ext_max": "7.4.12",
         "php_min": "5.0.0",
         "php_max": ""
     },
@@ -175,7 +175,7 @@
         "name": "SoapHeader",
         "static": false,
         "ext_min": "5.0.0",
-        "ext_max": "7.4.11",
+        "ext_max": "7.4.12",
         "php_min": "5.0.0",
         "php_max": ""
     },
@@ -195,7 +195,7 @@
         "name": "SoapParam",
         "static": false,
         "ext_min": "5.0.0",
-        "ext_max": "7.4.11",
+        "ext_max": "7.4.12",
         "php_min": "5.0.0",
         "php_max": ""
     },
@@ -215,7 +215,7 @@
         "name": "SoapServer",
         "static": false,
         "ext_min": "5.0.0",
-        "ext_max": "7.4.11",
+        "ext_max": "7.4.12",
         "php_min": "5.0.0",
         "php_max": ""
     },
@@ -315,7 +315,7 @@
         "name": "SoapVar",
         "static": false,
         "ext_min": "5.0.0",
-        "ext_max": "7.4.11",
+        "ext_max": "7.4.12",
         "php_min": "5.0.0",
         "php_max": ""
     },
