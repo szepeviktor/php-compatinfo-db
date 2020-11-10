@@ -859,7 +859,7 @@ class ReleaseHandler implements CommandHandlerInterface
         );
         $latest[] = array($refName, $ext, $major, $entry, $names);
 
-        $refName = 'Zendopcache';
+        $refName = 'opcache';
         $ext     = 'iniEntries';
         $major   = '7';
         $entry   = 'php_max';
