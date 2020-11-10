@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Unit tests for PHP_CompatInfo, zendopcache extension Reference
+ * Unit tests for PHP_CompatInfo, opcache extension Reference
  *
  * PHP version 7
  *
@@ -24,7 +24,7 @@ use Bartlett\Tests\CompatInfoDb\Reference\GenericTest;
 
 /**
  * Tests for PHP_CompatInfo, retrieving components informations
- * about zendopcache extension
+ * about opcache extension
  *
  * @category   PHP
  * @package    PHP_CompatInfo_Db
@@ -34,7 +34,7 @@ use Bartlett\Tests\CompatInfoDb\Reference\GenericTest;
  * @license    https://opensource.org/licenses/BSD-3-Clause The 3-Clause BSD License
  * @link       http://php5.laurent-laville.org/compatinfo/
  */
-class ZendopcacheExtensionTest extends GenericTest
+class OpcacheExtensionTest extends GenericTest
 {
     /**
      * Sets up the shared fixture.

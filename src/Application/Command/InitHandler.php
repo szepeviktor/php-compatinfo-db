@@ -383,6 +383,11 @@ class InitHandler implements CommandHandlerInterface
                 'releases'   => array('', '1', '2'),
                 'methods'    => array('', '1'),
             ),
+            'opcache' => array(
+                'functions'  => array('7'),
+                'iniEntries' => array('', '7', '71', '74'),
+                'releases'   => array('', '7', '71', '74'),
+            ),
             'pcre' => array(
                 'iniEntries' => array('', '70'),
                 'constants'  => array('', '70', '72', '73'),
@@ -568,11 +573,6 @@ class InitHandler implements CommandHandlerInterface
             ),
             'yaml' => array(
                 'releases'   => array('', '2'),
-            ),
-            'zendopcache' => array(
-                'functions'  => array('7'),
-                'iniEntries' => array('', '7', '71', '74'),
-                'releases'   => array('', '7', '71', '74'),
             ),
             'zip' => array(
                 'functions'  => array('1'),
