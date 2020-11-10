@@ -8,7 +8,8 @@ using the [Keep a CHANGELOG](http://keepachangelog.com) principles.
 
 ### Added
 
-- [#49](https://github.com/llaville/php-compatinfo-db/issues/49) Add support to PHP 8.0
+- PHP 7.3.24 support
+- [#49](https://github.com/llaville/php-compatinfo-db/issues/49) PHP 8.0 support
 - [#52](https://github.com/llaville/php-compatinfo-db/issues/52) Configuration - read it from a compatible PSR11 container
 
 ### Changed
