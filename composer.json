@@ -12,14 +12,20 @@
     "require": {
         "php": "^7.2|^8.0",
         "ext-curl": "*",
+        "ext-iconv": "*",
+        "ext-imagick": "*",
         "ext-intl": "*",
         "ext-json": "*",
         "ext-libxml": "*",
+        "ext-memcached": "*",
         "ext-openssl": "*",
         "ext-pcre": "*",
         "ext-pdo": "*",
         "ext-pdo_sqlite": "*",
         "ext-spl": "*",
+        "ext-sqlite3": "*",
+        "ext-xsl": "*",
+        "ext-zip": "*",
         "composer/package-versions-deprecated": "^1.8",
         "composer/semver": "^1.0|^2.0|^3.0",
         "league/tactician": "^1.0",
@@ -30,7 +36,8 @@
         "symfony/requirements-checker": "^2.0"
     },
     "require-dev": {
-        "phpunit/php-timer": "^2.0|^5.0.1"
+        "psr/log": "^1.0",
+        "symfony/phpunit-bridge": "^5.1"
     },
     "authors": [
         {
