@@ -146,6 +146,7 @@ class InitHandler implements CommandHandlerInterface
     {
         $majorReleases = array(
             'core' => array(
+                'const'      => array('80'),
                 'classes'    => array('4', '5', '7', '71', '73', '74', '80'),
                 'constants'  => array('4', '5', '71'),
                 'functions'  => array('4', '5', '7', '73', '74', '80'),
