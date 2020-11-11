@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Unit tests for PHP_CompatInfo, Generic extension base class.
  *
@@ -10,89 +10,54 @@
  * @author     Laurent Laville <pear@laurent-laville.org>
  * @author     Remi Collet <Remi@FamilleCollet.com>
  * @license    https://opensource.org/licenses/BSD-3-Clause The 3-Clause BSD License
- * @link       http://php5.laurent-laville.org/compatinfo/
+ * @link       http://bartlett.laurent-laville.org/php-compatinfo/
  */
 
 namespace Bartlett\Tests\CompatInfoDb\Reference;
 
+use Bartlett\CompatInfoDb\Domain\Factory\LibraryVersionProviderTrait;
 use Bartlett\CompatInfoDb\ExtensionFactory;
+use Bartlett\CompatInfoDb\ReferenceInterface;
 
 use Composer\Semver\Semver;
 
 use PHPUnit\Framework\ExpectationFailedException;
 
+use Generator;
+use ReflectionClass;
 use ReflectionException;
+use ReflectionExtension;
 use ReflectionFunction;
 use ReflectionMethod;
+use function interface_exists;
 
 /**
- * Tests for the PHP_CompatInfo, retrieving components informations
- * about any extension.
- *
- * @category   PHP
- * @package    PHP_CompatInfo_Db
- * @subpackage Tests
- * @author     Laurent Laville <pear@laurent-laville.org>
- * @author     Remi Collet <Remi@FamilleCollet.com>
- * @license    https://opensource.org/licenses/BSD-3-Clause The 3-Clause BSD License
- * @link       http://php5.laurent-laville.org/compatinfo/
- * @since      Class available since Release 3.0.0RC1 of PHP_CompatInfo
- * @since      Class available since Release 1.0.0alpha1 of PHP_CompatInfo_Db
+ * @since Release 3.0.0RC1 of PHP_CompatInfo
+ * @since Release 1.0.0alpha1 of PHP_CompatInfo_Db
  */
-abstract class GenericTest extends \PHPUnit\Framework\TestCase
+abstract class GenericTest extends TestCase
 {
-    const REF_ELEMENT_INI       = 1;
-    const REF_ELEMENT_CONSTANT  = 2;
-    const REF_ELEMENT_FUNCTION  = 3;
-    const REF_ELEMENT_INTERFACE = 4;
-    const REF_ELEMENT_CLASS     = 5;
-    const REF_ELEMENT_METHOD    = 6;
-    const REF_ELEMENT_CONST     = 7;  // class constant
-
     protected static $obj = null;
-    protected static $ref = null;
-    protected static $ext = null;
-
-    protected $extension;
 
     // Could be defined in Reference but missing (system dependant)
-    protected static $optionalreleases    = array();
-    protected static $optionalcfgs        = array();
-    protected static $optionalconstants   = array();
-    protected static $optionalfunctions   = array();
-    protected static $optionalclasses     = array();
-    protected static $optionalinterfaces  = array();
-    protected static $optionalmethods     = array();
+    protected static $optionalreleases    = [];
+    protected static $optionalcfgs        = [];
+    protected static $optionalconstants   = [];
+    protected static $optionalfunctions   = [];
+    protected static $optionalclasses     = [];
+    protected static $optionalinterfaces  = [];
+    protected static $optionalmethods     = [];
 
     // Could be present but missing in Reference (alias, ...)
-    protected static $ignoredcfgs          = array();
-    protected static $ignoredconstants     = array();
-    protected static $ignoredfunctions     = array();
-    protected static $ignoredclasses       = array();
-    protected static $ignoredinterfaces    = array();
-    protected static $ignoredmethods       = array();
-    protected static $ignoredconsts        = array();
+    protected static $ignoredcfgs          = [];
+    protected static $ignoredconstants     = [];
+    protected static $ignoredfunctions     = [];
+    protected static $ignoredclasses       = [];
+    protected static $ignoredinterfaces    = [];
+    protected static $ignoredmethods       = [];
+    protected static $ignoredconsts        = [];
 
-    /**
-     * {@inheritDoc}
-     */
-    public function __construct($name = null, array $data = [], $dataName = '')
-    {
-        parent::__construct($name, $data, $dataName);
-
-        $parts = explode('\\', get_class($this));
-
-        self::$ext = $name = strtolower(
-            str_replace('ExtensionTest', '', end($parts))
-        );
-
-        // special case(s)
-        if ('zendopcache' === $name) {
-            self::$ext = $name = 'zend opcache';
-        }
-
-        self::$ext = $this->extension = $name;
-    }
+    use LibraryVersionProviderTrait;
 
     /**
      * Sets up the shared fixture.
@@ -102,14 +67,15 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        self::$optionalreleases = array();
+        self::$optionalreleases = [];
 
-        if (!is_object(self::$obj) || self::$obj->getName() !== self::$ext) {
-            self::$obj = new ExtensionFactory(self::$ext);
-        }
+        $parts = explode('\\', get_called_class());
+        $name = strtolower(
+            str_replace('ExtensionTest', '', end($parts))
+        );
+        self::$obj = new ExtensionFactory($name);
 
         $currentVersion = self::$obj->getCurrentVersion();
-
         if ($currentVersion === false) {
             // extension did not provide any version information
             return;
@@ -144,103 +110,41 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
         self::$ignoredconsts      = [];
     }
 
+    protected function setUp(): void
+    {
+        $name = self::$obj->getName();
+        // special case(s)
+        if ('opcache' === $name) {
+            $name = 'zend opcache';
+        }
+
+        if (!extension_loaded($name)) {
+            $this->markTestSkipped(
+                sprintf('Extension %s is required.', $name)
+            );
+        }
+    }
+
     /**
      * Generic Reference validator and producer
+     *
+     * @param array $elements
+     * @param string $opt
+     * @return Generator
      */
-    public function provideReferenceValues($methodName)
+    private function provideReferenceValues(array $elements, string $opt)
     {
-        static $obj;
-
-        $this->checkExtension();
-
-        if (!is_object($obj) || $obj->getName() !== $this->extension) {
-            $obj = new ExtensionFactory($this->extension);
-        }
-
-        // hack(s) for compatibility reason in extension version test (see checkValuesFromReference)
-        if ('hash' === $obj->getName()) {
-            if (version_compare(PHP_VERSION, '7.3.0alpha3', 'lt')) {
-                // @see https://github.com/php/php-src/commit/3f96f01e9e4d50f47aa89da03853201304a58bba
-                $extVersion = '1.0';
-            }
-        } elseif ('fileinfo' === $obj->getName()) {
-            if (version_compare(PHP_VERSION, '7.3.0alpha2')) {
-                // @see https://github.com/php/php-src/commit/d6ccaef3e683976e6141b90ee1e315113f4a7baa
-                $extVersion = '1.0.5';
-            }
-        } elseif ('json' === $obj->getName()) {
-            if (version_compare(PHP_VERSION, '7.4.0beta2')) {
-                // @see https://github.com/php/php-src/commit/dee243d475b088189862d30755aac7bb9cdd61b3
-                $extVersion = '1.6.0';
-            }
-        } elseif ('snmp' === $obj->getName()) {
-            if (version_compare(PHP_VERSION, '7.3.0alpha2')) {
-                // @see https://github.com/php/php-src/commit/70f41d1d9cb03f76f73e7a6099bfc7ce0c2b2701
-                $extVersion = '0.1';
-            }
-        } elseif ('enchant' === $obj->getName()) {
-            if (version_compare(PHP_VERSION, '7.0.26RC1')) {
-                // @see https://github.com/php/php-src/commit/fb0902143291c8b605997a6b2a8f8717289a44d1
-                $extVersion = '1.1.0';
-            }
-        }
-
-        if ('testGetIniEntriesFromReference' === $methodName) {
-            $refElementType = self::REF_ELEMENT_INI;
-            $elements = $obj->getIniEntries();
-            $opt = 'optionalcfgs';
-
-        } elseif ('testGetFunctionsFromReference'  === $methodName) {
-            $refElementType = self::REF_ELEMENT_FUNCTION;
-            $elements = $obj->getFunctions();
-            $opt = 'optionalfunctions';
-
-        } elseif ('testGetConstantsFromReference'  === $methodName) {
-            $refElementType = self::REF_ELEMENT_CONSTANT;
-            $elements = $obj->getConstants();
-            $opt = 'optionalconstants';
-
-        } elseif ('testGetClassesFromReference' === $methodName) {
-            $refElementType = self::REF_ELEMENT_CLASS;
-            $elements = $obj->getClasses();
-            $opt = 'optionalclasses';
-
-        } elseif ('testGetInterfacesFromReference' === $methodName) {
-            $refElementType = self::REF_ELEMENT_INTERFACE;
-            $elements = $obj->getInterfaces();
-            $opt = 'optionalinterfaces';
-
-        } elseif ('testGetClassMethodsFromReference' === $methodName) {
-            $refElementType = self::REF_ELEMENT_METHOD;
-            $elements = [];
-
-            $methods = array_merge(
-                $obj->getClassMethods(),
-                $obj->getClassStaticMethods()
-            );
-
-            foreach ($methods as $class => $values) {
-                foreach ($values as $method => $range) {
-                    $elements[$class.'::'.$method] = $range;
-                }
-            }
-            $opt = 'optionalmethods';
-
-        } else {
-            $elements = [];
-        }
+        $extVersion = $this->getExtensionVersion();
 
         foreach ($elements as $name => $range) {
-            if (isset($extVersion)) {
-                $range['ext.min'] = $extVersion;
-            }
+            $range['ext.min'] = $extVersion;
 
             if (!empty($range['optional'])) {
                 self::${$opt}[] = $name;
                 continue;
             }
 
-            $libs = array();
+            $libs = [];
             foreach ($range as $key => $val) {
                 if (strpos($key, 'lib_') === 0) {
                     if (!empty($val)) {
@@ -251,76 +155,15 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
 
             foreach($libs as $lib => $constraint) {
                 $lib = str_replace('lib_', '', $lib);
-                $ver = self::lib($lib, 'version_text');
+                $ver = $this->getPrettyVersion($lib);
 
                 if (!Semver::satisfies($ver, $constraint)) {
                     self::${$opt}[] = $name;
                     continue 2;
                 }
             }
-            yield [$name, $range, $refElementType];
+            yield [$name, $range];
         }
-    }
-
-    protected static function lib($name, $key = 'version_number')
-    {
-        if ('curl' == $name
-            && function_exists('curl_version')
-        ) {
-            $meta = curl_version();
-            $meta['version_text'] = $meta['version'];
-
-        } elseif ('libxml' == $name) {
-            $meta = array(
-                'version_number' => defined('LIBXML_DOTTED_VERSION')
-                    ? self::toNumber(\LIBXML_DOTTED_VERSION) : false,
-                'version_text'   => defined('LIBXML_DOTTED_VERSION')
-                    ? \LIBXML_DOTTED_VERSION : false,
-            );
-
-        } elseif ('intl' == $name) {
-            $meta = array(
-                'version_number' => defined('INTL_ICU_VERSION')
-                    ? self::toNumber(\INTL_ICU_VERSION) : false,
-                'version_text'   => defined('INTL_ICU_VERSION')
-                    ? \INTL_ICU_VERSION : false,
-            );
-
-        } elseif ('openssl' == $name) {
-            $meta = array(
-                'version_number' => defined('OPENSSL_VERSION_NUMBER')
-                    ? \OPENSSL_VERSION_NUMBER : false,
-                'version_text'   => defined('OPENSSL_VERSION_TEXT')
-                    ? self::toText(\OPENSSL_VERSION_NUMBER) : false,
-            );
-
-        } elseif ('imagemagick' == $name) {
-            if (method_exists('Imagick', 'getVersion')) {
-                $v = \Imagick::getVersion();
-                if (preg_match('/ImageMagick ([0-9]+\.[0-9]+\.[0-9]+)/', $v['versionString'], $matches)) {
-                    $meta = array(
-                        'version_number' => $v['versionNumber'],
-                        'version_text'   => $matches[1],
-                    );
-                }
-            }
-
-        } elseif ('sqlite3' == $name) {
-            if (method_exists('sqlite3', 'version')) {
-                $v = \SQLite3::version();
-                $meta = array(
-                    'version_number' => $v['versionNumber'],
-                    'version_text'   => $v['versionString'],
-                );
-            }
-        }
-        if (isset($meta)) {
-            if (isset($key) && array_key_exists($key, $meta)) {
-                return $meta[$key];
-            }
-            return $meta;
-        }
-        return false;
     }
 
     protected static function toText($number)
@@ -354,35 +197,17 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     *
+     * @param string $element
+     * @param array $range
+     * @param array $optional
+     * @param array $ignored
+     * @return bool|null NULL if reference should be skipped, boolean otherwise
      */
-    protected function checkValuesFromReference($element, $range, $refElementType)
+    private function checkValuesFromReference(string $element, array $range, array $optional, array $ignored): ?bool
     {
         if (in_array($range['ext.min'], self::$optionalreleases)) {
-            return;
+            return null;
         }
-
-        if (self::REF_ELEMENT_INI == $refElementType) {
-            $optional = self::$optionalcfgs;
-            $ignored = self::$ignoredcfgs;
-        } elseif (self::REF_ELEMENT_CONSTANT == $refElementType) {
-            $optional = self::$optionalconstants;
-            $ignored = self::$ignoredconstants;
-        } elseif (self::REF_ELEMENT_FUNCTION == $refElementType) {
-            $optional = self::$optionalfunctions;
-            $ignored = self::$ignoredfunctions;
-        } elseif (self::REF_ELEMENT_INTERFACE == $refElementType) {
-            $optional = self::$optionalinterfaces;
-            $ignored = self::$ignoredinterfaces;
-        } elseif (self::REF_ELEMENT_CLASS == $refElementType) {
-            $optional = self::$optionalclasses;
-            $ignored = self::$ignoredclasses;
-        } elseif (self::REF_ELEMENT_METHOD == $refElementType) {
-            $optional = self::$optionalmethods;
-            $ignored = self::$ignoredmethods;
-        }
-
-        $EXT_VERSION = self::$obj->getCurrentVersion();
 
         if (array_key_exists('php.excludes', $range)) {
             if (in_array(PHP_VERSION, $range['php.excludes'])) {
@@ -392,7 +217,7 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
         }
 
         if (in_array($element, $optional) || in_array($element, $ignored)) {
-            return;
+            return null;
         }
 
         $min = $range['php.min'];
@@ -410,9 +235,11 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
             // i.e with `utf8_encode` (from `xml` to `standard` extension)
 
             if (!$shouldBeThere) {
-                return; // ignore it !
+                return null; // ignore it !
             }
         }
+
+        $extVersion = $this->getExtensionVersion();
 
         if (!empty($min)) {
             $shouldBeThere = version_compare(PHP_VERSION, $min, 'ge');
@@ -423,170 +250,37 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
             $shouldBeThere = version_compare(PHP_VERSION, $max, 'le');
         }
         if (!empty($emin) && $shouldBeThere) {
-            $shouldBeThere = version_compare($EXT_VERSION, $emin, 'ge');
+            $shouldBeThere = version_compare($extVersion, $emin, 'ge');
         }
         if (!empty($emax) && $shouldBeThere) {
-            $shouldBeThere = version_compare($EXT_VERSION, $emax, 'le');
+            $shouldBeThere = version_compare($extVersion, $emax, 'le');
         }
-        if ($shouldBeThere) {
-            // Should be there except if set as optional
-            $this->assertShouldBeThere($element, $refElementType);
-        } else {
-            $this->assertShouldNotBeThere($element, $refElementType, $min, $max);
-        }
-    }
 
-    protected function assertShouldBeThere($element, $refElementType)
-    {
-        if (self::REF_ELEMENT_INI == $refElementType) {
-            $this->assertNotSame(
-                ini_get($element),
-                false,
-                "INI '$element', found in Reference, does not exists."
-            );
-
-        } elseif (self::REF_ELEMENT_FUNCTION == $refElementType) {
-            try {
-                $function = new ReflectionFunction($element);
-                $this->assertTrue(
-                    $function->isInternal(),
-                    "Function '$element', found in Reference, does not exists."
-                );
-            } catch (ReflectionException $e) {
-                // thrown if the given function does not exist.
-                $this->assertTrue(
-                    false,
-                    "Function '$element', found in Reference, does not exists."
-                );
-            }
-
-        } elseif (self::REF_ELEMENT_CONSTANT == $refElementType) {
-            $this->assertTrue(
-                defined($element),
-                "Constant '$element', found in Reference, does not exists."
-            );
-
-        } elseif (self::REF_ELEMENT_CLASS == $refElementType) {
-            $this->assertTrue(
-                class_exists($element, false),
-                "Class '$element', found in Reference, does not exists."
-            );
-
-        } elseif (self::REF_ELEMENT_INTERFACE == $refElementType) {
-            $this->assertTrue(
-                interface_exists($element, false),
-                "Interface '$element', found in Reference, does not exists."
-            );
-
-        } elseif (self::REF_ELEMENT_METHOD == $refElementType) {
-            list ($object, $method) = explode('::', $element);
-            $this->assertTrue(
-                method_exists($object, $method),
-                "Class Method '$element', found in Reference, does not exists."
-            );
-        }
-    }
-
-    protected function assertShouldNotBeThere($element, $refElementType, $min, $max)
-    {
-        if (self::REF_ELEMENT_INI == $refElementType) {
-            $this->assertFalse(
-                (false !== ini_get($element)),
-                "INI '$element', found in Reference ($min,$max), exists."
-            );
-
-        } elseif (self::REF_ELEMENT_FUNCTION == $refElementType) {
-            try {
-                $function = new ReflectionFunction($element);
-                $this->assertFalse(
-                    $function->isInternal(),
-                    "Function '$element', found in Reference ($min,$max), exists."
-                );
-            } catch (ReflectionException $e) {
-                // thrown if the given function does not exist.
-                return;
-            }
-
-        } elseif (self::REF_ELEMENT_CONSTANT == $refElementType) {
-            $this->assertFalse(
-                defined($element),
-                "Constant '$element', found in Reference ($min,$max), exists."
-            );
-
-        } elseif (self::REF_ELEMENT_CLASS == $refElementType) {
-            $this->assertFalse(
-                class_exists($element, false),
-                "Class '$element', found in Reference ($min,$max), exists."
-            );
-
-        } elseif (self::REF_ELEMENT_INTERFACE == $refElementType) {
-            $this->assertFalse(
-                interface_exists($element, false),
-                "Interface '$element', found in Reference ($min,$max), exists."
-            );
-
-        } elseif (self::REF_ELEMENT_METHOD == $refElementType) {
-            list ($object, $method) = explode('::', $element);
-            try {
-                $method = new ReflectionMethod($object, $method);
-                $this->assertFalse(
-                    $method->getDeclaringClass() === $object,
-                    "Class Method '$element', found in Reference, exists."
-                );
-            } catch (ReflectionException $e) {
-                // thrown if the given method does not exist.
-                return;
-            }
-        }
-    }
-
-    /**
-     * Generic Extension validator and producer
-     */
-    public function provideExtensionValues($methodName)
-    {
-        $this->checkExtension();
-
-        if ('testGetConstantsFromExtension' === $methodName) {
-            return $this->constantsFromExtensionProvider();
-
-        } elseif ('testGetClassConstantsFromExtension' === $methodName) {
-            return $this->classConstantsFromExtensionProvider();
-
-        } elseif ('testGetIniEntriesFromExtension' === $methodName) {
-            return $this->iniEntriesFromExtensionProvider();
-
-        } elseif ('testGetFunctionsFromExtension' == $methodName) {
-            return $this->functionsFromExtensionProvider();
-
-        } elseif ('testGetClassesFromExtension' === $methodName) {
-            return $this->classesFromExtensionProvider();
-
-        } elseif ('testGetInterfacesFromExtension' === $methodName) {
-            return $this->interfacesFromExtensionProvider();
-
-        } elseif ('testGetClassMethodsFromExtension' === $methodName) {
-            return $this->classMethodsFromExtensionProvider();
-        }
+        // Should be there except if set as optional
+        return $shouldBeThere;
     }
 
     /**
      * Provider to get INI entries from an extension
+     *
+     * @return Generator
      */
-    public function iniEntriesFromExtensionProvider()
+    private function iniEntriesFromExtensionProvider()
     {
-        $extension = new \ReflectionExtension(self::$ext);
+        $extension = $this->getReflectionExtension();
         $elements  = array_keys($extension->getINIEntries());
 
         foreach ($elements as $name) {
-            yield [$name];
+            yield $name;
         }
     }
 
     /**
      * Provider to get constants from an extension
+     *
+     * @return Generator
      */
-    public function constantsFromExtensionProvider()
+    private function constantsFromExtensionProvider()
     {
         $constants = get_defined_constants(true);
 
@@ -595,99 +289,113 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
             array_pop($constants['Core']);
         }
 
-        $elements = isset($constants[self::$ext]) ? array_keys($constants[self::$ext]) : [];
+        $ext = self::$obj->getName();
+
+        $elements = isset($constants[$ext]) ? array_keys($constants[$ext]) : [];
 
         foreach ($elements as $name) {
-            yield [$name];
+            yield $name;
         }
     }
 
     /**
      * Provider to get functions from extension
+     *
+     * @return Generator
      */
-    public function functionsFromExtensionProvider()
+    private function functionsFromExtensionProvider()
     {
-        $elements = get_extension_funcs(strtolower(self::$ext));
+        $ext = self::$obj->getName();
+
+        $elements = get_extension_funcs(strtolower($ext));
         if (!is_array($elements)) {
             // can be NULL for ext without function
             $elements = [];
         }
 
         foreach ($elements as $name) {
-            yield [$name];
+            yield $name;
         }
     }
 
     /**
      * Provider to get classes from extension
+     *
+     * @return Generator
      */
-    public function classesFromExtensionProvider()
+    private function classesFromExtensionProvider()
     {
-        $extension = new \ReflectionExtension(self::$ext);
+        $extension = $this->getReflectionExtension();
         $classes   = array_unique($extension->getClassNames());
         $elements  = array_filter($classes, 'class_exists');
 
         foreach ($elements as $name) {
-            yield [$name];
+            yield $name;
         }
     }
 
     /**
      * Provider to get interfaces from extension
+     *
+     * @return Generator
      */
-    public function interfacesFromExtensionProvider()
+    private function interfacesFromExtensionProvider()
     {
-        $extension = new \ReflectionExtension(self::$ext);
+        $extension = $this->getReflectionExtension();
         $classes   = array_unique($extension->getClassNames());
         $elements  = array_filter($classes, 'interface_exists');
 
         foreach ($elements as $name) {
-            yield [$name];
+            yield $name;
         }
     }
 
     /**
      * Provider to get class constants from extension
+     *
+     * @return Generator
+     * @throws ReflectionException
      */
-    public function classConstantsFromExtensionProvider()
+    private function classConstantsFromExtensionProvider()
     {
-        $elements = [];
+        $extension = $this->getReflectionExtension();
+        $classes   = array_unique($extension->getClassNames());
+        $elements  = [];
 
-            $extension = new \ReflectionExtension(self::$ext);
-            $classes   = array_unique($extension->getClassNames());
-
-            foreach ($classes as $classname) {
-                $class = new \ReflectionClass($classname);
-                if ($class->getName() != $classname) {
-                    /* Skip class alias */
-                    continue;
-                }
-
-                $elements = $elements + array_map(
-                    function ($value) use ($classname) {
-                        return "$classname::$value";
-                    },
-                    array_keys($class->getConstants())
-                );
+        foreach ($classes as $classname) {
+            $class = new ReflectionClass($classname);
+            if ($class->getName() != $classname) {
+                /* Skip class alias */
+                continue;
             }
 
+            $elements = $elements + array_map(
+                function ($value) use ($classname) {
+                    return "$classname::$value";
+                },
+                array_keys($class->getConstants())
+            );
+        }
+
         foreach ($elements as $name) {
-            yield [$name];
+            yield $name;
         }
     }
 
     /**
      * Provider to get class methods from extension
+     *
+     * @return Generator
+     * @throws ReflectionException
      */
-    public function classMethodsFromExtensionProvider()
+    private function classMethodsFromExtensionProvider()
     {
-        $extension = new \ReflectionExtension(self::$ext);
+        $extension = $this->getReflectionExtension();
         $classes   = array_unique($extension->getClassNames());
-
-        $elements = [];
+        $elements  = [];
 
         foreach ($classes as $classname) {
-            $class   = new \ReflectionClass($classname);
+            $class   = new ReflectionClass($classname);
             if ($class->getName() != $classname) {
                 /* Skip class alias */
                 continue;
@@ -715,80 +423,80 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
         }
 
         foreach ($elements as $name) {
-            yield [$name];
-        }
-    }
-
-    /**
-     * Check that a reference exists and initialize an instance
-     *
-     * @return void
-     */
-    public function checkExtension()
-    {
-        $parts = explode('\\', get_called_class());
-
-        self::$ext = $name = strtolower(
-            str_replace('ExtensionTest', '', end($parts))
-        );
-
-        // special case(s)
-        if ('zendopcache' === $name) {
-            self::$ext = $name = 'zend opcache';
-        }
-
-        if (!extension_loaded(self::$ext)) {
-            $this->markTestSkipped(
-                sprintf('Extension %s is required.', self::$ext)
-            );
+            yield $name;
         }
     }
 
     /**
      * Test than all referenced ini entries exists
      *
-     * @dataProvider provideReferenceValues
      * @group  reference
      * @return void
      */
-    public function testGetIniEntriesFromReference($name, $range, $refElementType)
+    public function testGetIniEntriesFromReference()
     {
-        $this->checkValuesFromReference(
-            $name,
-            $range,
-            $refElementType
-        );
+        foreach($this->provideReferenceValues(self::$obj->getIniEntries(), 'optionalcfgs') as $args) {
+            list($element, $range) = $args;
+
+            $shouldBeThere = $this->checkValuesFromReference(
+                $element,
+                $range,
+                self::$optionalcfgs,
+                self::$ignoredcfgs
+            );
+
+            if (null === $shouldBeThere) {
+                // test $element should be skipped because it was marked as optional or ignored
+                continue;
+            }
+
+            if ($shouldBeThere) {
+                $this->assertTrue(
+                    (false !== ini_get($element)),
+                    "INI '$element', found in Reference, does not exists."
+                );
+            } else {
+                $min = $range['php.min'];
+                $max = $range['php.max'];
+
+                $this->assertFalse(
+                    (false !== ini_get($element)),
+                    "INI '$element', found in Reference ($min, $max), exists."
+                );
+            }
+        }
     }
 
     /**
      * Test that each ini entries are defined in reference
      *
-     * @dataProvider provideExtensionValues
      * @group  reference
      * @return void
      */
-    public function testGetIniEntriesFromExtension($name)
+    public function testGetIniEntriesFromExtension()
     {
-        static $obj;
-        static $dict;
+        $ext = self::$obj->getName();
 
-        if ('internal' == self::$ext) {
+        if ('internal' === $ext) {
             // only Core is a valid extension name for API reflection
             return;
         }
 
-        if (!is_object($obj) || $obj->getName() !== $this->extension) {
-            $obj = new ExtensionFactory($this->extension);
-            $dict = $obj->getIniEntries();
-            $this->assertTrue(is_array($dict));
+        $dict = self::$obj->getIniEntries();
+        $this->assertTrue(is_array($dict));
+
+        $generator = $this->iniEntriesFromExtensionProvider();
+        if (!$generator->valid()) {
+            return;
         }
+        $name = $generator->current();
 
         if (!in_array($name, self::$ignoredcfgs)) {
             $this->assertExtensionComponentHasKey(
                 $name,
                 $dict,
                 "Defined INI '$name' not known in Reference.",
-                $obj
+                self::$obj
             );
         }
     }
@@ -796,43 +504,81 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
     /**
      * Test than all referenced functions exists
      *
-     * @dataProvider provideReferenceValues
      * @group  reference
      * @return void
      */
-    public function testGetFunctionsFromReference($name, $range, $refElementType)
+    public function testGetFunctionsFromReference()
     {
-        $this->checkValuesFromReference(
-            $name,
-            $range,
-            $refElementType
-        );
+        foreach ($this->provideReferenceValues(self::$obj->getFunctions(), 'optionalfunctions') as $args) {
+            list($element, $range) = $args;
+
+            $shouldBeThere = $this->checkValuesFromReference(
+                $element,
+                $range,
+                self::$optionalfunctions,
+                self::$ignoredfunctions
+            );
+
+            if (null === $shouldBeThere) {
+                // test $element should be skipped because it was marked as optional or ignored
+                continue;
+            }
+
+            if ($shouldBeThere) {
+                try {
+                    $function = new ReflectionFunction($element);
+                    $this->assertTrue(
+                        $function->isInternal(),
+                        "Function '$element', found in Reference, does not exists."
+                    );
+                } catch (ReflectionException $e) {
+                    // thrown if the given function does not exist.
+                    $this->assertTrue(
+                        false,
+                        "Function '$element', found in Reference, does not exists."
+                    );
+                }
+            } else {
+                $min = $range['php.min'];
+                $max = $range['php.max'];
+
+                try {
+                    $function = new ReflectionFunction($element);
+                    $this->assertFalse(
+                        $function->isInternal(),
+                        "Function '$element', found in Reference ($min, $max), exists."
+                    );
+                } catch (ReflectionException $e) {
+                    // thrown if the given function does not exist.
+                    return;
+                }
+            }
+        }
     }
 
     /**
      * Test that each functions are defined in reference
      *
-     * @dataProvider provideExtensionValues
      * @group  reference
      * @return void
      */
-    public function testGetFunctionsFromExtension($name)
+    public function testGetFunctionsFromExtension()
     {
-        static $obj;
-        static $dict;
+        $dict = self::$obj->getFunctions();
+        $this->assertTrue(is_array($dict));
 
-        if (!is_object($obj) || $obj->getName() !== $this->extension) {
-            $obj = new ExtensionFactory($this->extension);
-            $dict = $obj->getFunctions();
-            $this->assertTrue(is_array($dict));
+        $generator = $this->functionsFromExtensionProvider();
+        if (!$generator->valid()) {
+            return;
         }
+        $name = $generator->current();
 
         if (!in_array($name, self::$ignoredfunctions)) {
             $this->assertExtensionComponentHasKey(
                 $name,
                 $dict,
                 "Defined function '$name' not known in Reference.",
-                $obj
+                self::$obj
             );
         }
     }
@@ -840,38 +586,60 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
     /**
      * Test than all referenced constants exists
      *
-     * @dataProvider provideReferenceValues
      * @group  reference
      * @return void
      */
-    public function testGetConstantsFromReference($name, $range, $refElementType)
+    public function testGetConstantsFromReference()
     {
-        $this->checkValuesFromReference(
-            $name,
-            $range,
-            $refElementType
-        );
+        foreach ($this->provideReferenceValues(self::$obj->getConstants(), 'optionalconstants') as $args) {
+            list($element, $range) = $args;
+
+            $shouldBeThere = $this->checkValuesFromReference(
+                $element,
+                $range,
+                self::$optionalconstants,
+                self::$ignoredconstants
+            );
+
+            if (null === $shouldBeThere) {
+                // test $element should be skipped because it was marked as optional or ignored
+                continue;
+            }
+
+            if ($shouldBeThere) {
+                $this->assertTrue(
+                    defined($element),
+                    "Constant '$element', found in Reference, does not exists."
+                );
+            } else {
+                $min = $range['php.min'];
+                $max = $range['php.max'];
+
+                $this->assertFalse(
+                    defined($element),
+                    "Constant '$element', found in Reference ($min, $max), exists."
+                );
+            }
+        }
     }
 
     /**
      * Test that each constants are defined in reference
      *
-     * @dataProvider provideExtensionValues
      * @group  reference
      * @return void
      */
-    public function testGetConstantsFromExtension($name)
+    public function testGetConstantsFromExtension()
     {
-        static $obj;
-        static $dict;
+        $dict = self::$obj->getConstants();
+        $this->assertTrue(is_array($dict));
 
-        if (!is_object($obj) || $obj->getName() !== $this->extension) {
-            $obj = new ExtensionFactory($this->extension);
-            $dict = $obj->getConstants();
-            $this->assertTrue(is_array($dict));
+        $generator = $this->constantsFromExtensionProvider();
+        if (!$generator->valid()) {
+            return;
         }
+        $name = $generator->current();
 
-        // Test if each constants are in reference
         if (!in_array($name, self::$ignoredconstants)) {
             $this->assertArrayHasKey(
                 $name,
@@ -884,36 +652,59 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
     /**
      * Test than all referenced classes exists
      *
-     * @dataProvider provideReferenceValues
      * @group  reference
      * @return void
      */
-    public function testGetClassesFromReference($name, $range, $refElementType)
+    public function testGetClassesFromReference()
     {
-        $this->checkValuesFromReference(
-            $name,
-            $range,
-            $refElementType
-        );
+        foreach ($this->provideReferenceValues(self::$obj->getClasses(), 'optionalclasses') as $args) {
+            list($element, $range) = $args;
+
+            $shouldBeThere = $this->checkValuesFromReference(
+                $element,
+                $range,
+                self::$optionalclasses,
+                self::$ignoredclasses
+            );
+
+            if (null === $shouldBeThere) {
+                // test $element should be skipped because it was marked as optional or ignored
+                continue;
+            }
+
+            if ($shouldBeThere) {
+                $this->assertTrue(
+                    class_exists($element, false),
+                    "Class '$element', found in Reference, does not exists."
+                );
+            } else {
+                $min = $range['php.min'];
+                $max = $range['php.max'];
+
+                $this->assertFalse(
+                    class_exists($element, false),
+                    "Class '$element', found in Reference ($min, $max), exists."
+                );
+            }
+        }
     }
 
     /**
      * Test that each classes are defined in reference
      *
-     * @dataProvider provideExtensionValues
      * @group  reference
      * @return void
      */
-    public function testGetClassesFromExtension($name)
+    public function testGetClassesFromExtension()
     {
-        static $obj;
-        static $dict;
+        $dict = self::$obj->getClasses();
+        $this->assertTrue(is_array($dict));
 
-        if (!is_object($obj) || $obj->getName() !== $this->extension) {
-            $obj = new ExtensionFactory($this->extension);
-            $dict = $obj->getClasses();
-            $this->assertTrue(is_array($dict));
+        $generator = $this->classesFromExtensionProvider();
+        if (!$generator->valid()) {
+            return;
         }
+        $name = $generator->current();
 
         if (!in_array($name, self::$ignoredclasses)) {
             $this->assertArrayHasKey(
@@ -927,43 +718,84 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
     /**
      * Test than all referenced class methods exists
      *
-     * @dataProvider provideReferenceValues
      * @group  reference
      * @return void
      */
-    public function testGetClassMethodsFromReference($name, $range, $refElementType)
+    public function testGetClassMethodsFromReference()
     {
-        $this->checkValuesFromReference(
-            $name,
-            $range,
-            $refElementType
+        $elements = [];
+
+        $methods = array_merge(
+            self::$obj->getClassMethods(),
+            self::$obj->getClassStaticMethods()
         );
+
+        foreach ($methods as $class => $values) {
+            foreach ($values as $method => $range) {
+                $elements[$class.'::'.$method] = $range;
+            }
+        }
+
+        foreach ($this->provideReferenceValues($elements, 'optionalmethods') as $args) {
+            list($element, $range) = $args;
+
+            $shouldBeThere = $this->checkValuesFromReference(
+                $element,
+                $range,
+                self::$optionalmethods,
+                self::$ignoredmethods
+            );
+
+            if (null === $shouldBeThere) {
+                // test $element should be skipped because it was marked as optional or ignored
+                continue;
+            }
+
+            if ($shouldBeThere) {
+                list ($object, $method) = explode('::', $element);
+                $this->assertTrue(
+                    method_exists($object, $method),
+                    "Class Method '$element', found in Reference, does not exists."
+                );
+            } else {
+                list ($object, $method) = explode('::', $element);
+                try {
+                    $method = new ReflectionMethod($object, $method);
+                    $this->assertFalse(
+                        $method->getDeclaringClass() === $object,
+                        "Class Method '$element', found in Reference, exists."
+                    );
+                } catch (ReflectionException $e) {
+                    // thrown if the given method does not exist.
+                    return;
+                }
+            }
+        }
     }
 
     /**
      * Test that each class methods are defined in reference
      *
-     * @dataProvider provideExtensionValues
      * @group  reference
      * @return void
+     * @throws ReflectionException
      */
-    public function testGetClassMethodsFromExtension($name)
+    public function testGetClassMethodsFromExtension()
     {
-        static $obj;
-        static $nonStaticMethods;
-        static $staticMethods;
+        $generator = $this->classMethodsFromExtensionProvider();
+        if (!$generator->valid()) {
+            return;
+        }
+        $name = $generator->current();
 
         if (in_array($name, self::$ignoredmethods)) {
             return;
         }
 
-        if (!is_object($obj) || $obj->getName() !== $this->extension) {
-            $obj = new ExtensionFactory($this->extension);
-            $nonStaticMethods = $obj->getClassMethods();
-            $this->assertTrue(is_array($nonStaticMethods));
-            $staticMethods    = $obj->getClassStaticMethods();
-            $this->assertTrue(is_array($staticMethods));
-        }
+        $nonStaticMethods = self::$obj->getClassMethods();
+        $this->assertTrue(is_array($nonStaticMethods));
+        $staticMethods    = self::$obj->getClassStaticMethods();
+        $this->assertTrue(is_array($staticMethods));
 
         $this->assertNotEquals(
             0 ,
@@ -991,20 +823,20 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that each class constants are defined in reference
      *
-     * @dataProvider provideExtensionValues
      * @group  reference
      * @return void
+     * @throws ReflectionException
      */
-    public function testGetClassConstantsFromExtension($name)
+    public function testGetClassConstantsFromExtension()
     {
-        static $obj;
-        static $dict;
+        $dict = self::$obj->getClassConstants();
+        $this->assertTrue(is_array($dict));
 
-        if (!is_object($obj) || $obj->getName() !== $this->extension) {
-            $obj = new ExtensionFactory($this->extension);
-            $dict = $obj->getClassConstants();
-            $this->assertTrue(is_array($dict));
+        $generator = $this->classConstantsFromExtensionProvider();
+        if (!$generator->valid()) {
+            return;
         }
+        $name = $generator->current();
 
         list ($classname, $name) = explode('::', $name);
 
@@ -1013,7 +845,7 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
                 $name,
                 $dict[$classname],
                 "Defined class constant '$classname::$name' not known in Reference.",
-                $obj
+                self::$obj
             );
         }
     }
@@ -1021,48 +853,71 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
     /**
      * Test than all referenced interfaces exists
      *
-     * @dataProvider provideReferenceValues
      * @group  reference
      * @return void
      */
-    public function testGetInterfacesFromReference($name, $range, $refElementType)
+    public function testGetInterfacesFromReference()
     {
-        $this->checkValuesFromReference(
-            $name,
-            $range,
-            $refElementType
-        );
+        foreach ($this->provideReferenceValues(self::$obj->getInterfaces(), 'optionalinterfaces') as $args) {
+            list($element, $range) = $args;
+
+            $shouldBeThere = $this->checkValuesFromReference(
+                $element,
+                $range,
+                self::$optionalinterfaces,
+                self::$ignoredinterfaces
+            );
+
+            if (null === $shouldBeThere) {
+                // test $element should be skipped because it was marked as optional or ignored
+                continue;
+            }
+
+            if ($shouldBeThere) {
+                $this->assertTrue(
+                    interface_exists($element, false),
+                    "Interface '$element', found in Reference, does not exists."
+                );
+            } else {
+                $min = $range['php.min'];
+                $max = $range['php.max'];
+
+                $this->assertFalse(
+                    interface_exists($element, false),
+                    "Interface '$element', found in Reference ($min, $max), exists."
+                );
+            }
+        }
     }
 
     /**
      * Test that each interface is defined in reference
      *
-     * @dataProvider provideExtensionValues
      * @group  reference
      * @return void
      */
-    public function testGetInterfacesFromExtension($name)
+    public function testGetInterfacesFromExtension()
     {
-        static $obj;
-        static $dict;
+        $dict = self::$obj->getInterfaces();
+        $this->assertTrue(is_array($dict));
 
-        if (!is_object($obj) || $obj->getName() !== $this->extension) {
-            $obj = new ExtensionFactory($this->extension);
-            $dict = $obj->getInterfaces();
-            $this->assertTrue(is_array($dict));
+        $generator = $this->interfacesFromExtensionProvider();
+        if (!$generator->valid()) {
+            return;
         }
+        $name = $generator->current();
 
         if (!in_array($name, self::$ignoredinterfaces)) {
             $this->assertExtensionComponentHasKey(
                 $name,
                 $dict,
                 "Defined interface '$name' not known in Reference.",
-                $obj
+                self::$obj
             );
         }
     }
 
-    public function assertExtensionComponentHasKey($key, $array, $message, $obj)
+    private function assertExtensionComponentHasKey($key, $array, $message, $obj)
     {
         try {
             $this->assertArrayHasKey($key, $array, $message);
@@ -1077,13 +932,13 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
         }
     }
 
-    protected function checkUpdateExtension($obj)
+    private function checkUpdateExtension(ReferenceInterface $obj): ?string
     {
         $currentVersion = $obj->getCurrentVersion();
 
         if ($currentVersion === false) {
             // extension did not provide any version information
-            return;
+            return null;
         }
 
         $releases = array_keys($obj->getReleases());
@@ -1091,7 +946,7 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
         $latestReleaseReferenced = array_pop($releases);
         // check if extension installed is more recent than the one declared in compatinfo-db
         if (version_compare($currentVersion, $latestReleaseReferenced, 'le')) {
-            return;
+            return null;
         }
 
         return sprintf(
@@ -1100,5 +955,56 @@ abstract class GenericTest extends \PHPUnit\Framework\TestCase
             $obj->getCurrentVersion(),
             $latestReleaseReferenced
         );
+    }
+
+    private function getReflectionExtension(): ReflectionExtension
+    {
+        $name = self::$obj->getName();
+        // special case(s)
+        if ('opcache' === $name) {
+            $name = 'zend opcache';
+        }
+        return new ReflectionExtension($name);
+    }
+
+    /**
+     * Hack(s) for compatibility reason in extension version test (see checkValuesFromReference)
+     *
+     * @return string
+     */
+    private function getExtensionVersion(): string
+    {
+        if ('enchant' === self::$obj->getName()) {
+            if (version_compare(PHP_VERSION, '7.0.26RC1')) {
+                // @see https://github.com/php/php-src/commit/fb0902143291c8b605997a6b2a8f8717289a44d1
+                return '1.1.0';
+            }
+        } elseif ('fileinfo' === self::$obj->getName()) {
+            if (version_compare(PHP_VERSION, '7.3.0alpha2')) {
+                // @see https://github.com/php/php-src/commit/d6ccaef3e683976e6141b90ee1e315113f4a7baa
+                return '1.0.5';
+            }
+        } elseif ('hash' === self::$obj->getName()) {
+            if (version_compare(PHP_VERSION, '7.3.0alpha3', 'lt')) {
+                // @see https://github.com/php/php-src/commit/3f96f01e9e4d50f47aa89da03853201304a58bba
+                return '1.0';
+            }
+        } elseif ('intl' === self::$obj->getName()) {
+            if (version_compare(PHP_VERSION, '7.3.0alpha2')) {
+                // @see https://github.com/php/php-src/commit/b1767d8a5625d7347e500e1230cf6c6c66d111ad
+                return '1.1.0';
+            }
+        } elseif ('json' === self::$obj->getName()) {
+            if (version_compare(PHP_VERSION, '7.4.0beta2')) {
+                // @see https://github.com/php/php-src/commit/dee243d475b088189862d30755aac7bb9cdd61b3
+                return '1.6.0';
+            }
+        } elseif ('snmp' === self::$obj->getName()) {
+            if (version_compare(PHP_VERSION, '7.3.0alpha2')) {
+                // @see https://github.com/php/php-src/commit/70f41d1d9cb03f76f73e7a6099bfc7ce0c2b2701
+                return '0.1';
+            }
+        }
+        return self::$obj->getCurrentVersion();
     }
 }
