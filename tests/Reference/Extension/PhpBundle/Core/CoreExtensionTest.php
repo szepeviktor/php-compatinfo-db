@@ -121,6 +121,10 @@ class CoreExtensionTest extends GenericTest
             'self',
         );
 
+        self::$optionalinterfaces = [
+            'Stringable',
+        ];
+
         self::$optionalmethods = [
             'Closure::__invoke',
             'Generator::__wakeup',
