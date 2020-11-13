@@ -4,12 +4,21 @@ All notable changes of the CompatInfoDB 2 release series will be documented in t
 This project adheres to [Semantic Versioning](http://semver.org/),
 using the [Keep a CHANGELOG](http://keepachangelog.com) principles.
 
-## [Unreleased]
+## [2.19.0] - 2020-10-03
+
+### Added
+
+- Support to PHP 7.2.34
+- Support to PHP 7.3.23
+- Support to PHP 7.4.11
+- Start of PHP 8 support: backport commit 1f0c681 in master branch allows release 2.19 to run unit tests under PHP 8
 
 ### Changed
 
 - Mailparse reference updated to version 3.1.1 (stable)
-- Xdebug reference updated to version 2.9.7 (stable)
+- OAuth reference updated to version 2.0.7 (stable)
+- Xdebug reference updated to version 2.9.8 (stable)
+- Zip reference updated to version 1.19.1 (stable)
 
 ## [2.18.0] - 2020-09-13
 
@@ -295,12 +304,13 @@ using the [Keep a CHANGELOG](http://keepachangelog.com) principles.
 ### Changed
 
 - Drop support to PHP 5
-- APCu reference updated to version 5.1.6 (stable)
+- APCu reference updated to version 5.1.16 (stable)
 - Lzf reference updated to version 1.6.7 (stable)
 - Memcached reference updated to version 3.1.3 (stable)
 - Msgpack reference updated to version 2.0.3 (stable)
 
-[unreleased]: https://github.com/llaville/php-compatinfo-db/compare/2.18.0...HEAD
+[unreleased]: https://github.com/llaville/php-compatinfo-db/compare/2.19.0...HEAD
+[2.19.0]: https://github.com/llaville/php-compatinfo-db/compare/2.18.0...2.19.0
 [2.18.0]: https://github.com/llaville/php-compatinfo-db/compare/2.17.0...2.18.0
 [2.17.0]: https://github.com/llaville/php-compatinfo-db/compare/2.16.0...2.17.0
 [2.16.0]: https://github.com/llaville/php-compatinfo-db/compare/2.15.0...2.16.0
