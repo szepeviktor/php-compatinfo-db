@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Bartlett\CompatInfoDb\Application\Command;
 
@@ -33,21 +31,8 @@ class InitHandler implements CommandHandlerInterface
             }
         }
 
-        $extension = $command->extension;
         $output = $command->output;
-
-        if (empty($extension)) {
-            $extensions = $this->extensions;
-        } else {
-            if (!in_array($extension, $this->extensions)) {
-                $output->writeln(
-                    sprintf('<error>Extension %s does not exist.</error>', $extension)
-                );
-                return;
-            }
-            $extensions = array($extension);
-        }
-
+        $extensions = $this->extensions;
 
         // delete current DB before to init a new copy again
         unlink($command->dbFilename);
@@ -140,11 +125,34 @@ class InitHandler implements CommandHandlerInterface
     }
 
     /**
-     * Reads splitted JSON data files
+     * Reads split JSON data files
+     *
+     * @param string $refName
+     * @param string $ext
+     * @return array
      */
-    private function readData(string $refName, string $ext) : array
+    private function readData(string $refName, string $ext): array
     {
-        $majorReleases = array(
+        $data = [];
+
+        foreach ($this->getMajorReleaseDefinition($refName, $ext) as $major) {
+            $temp = $this->jsonFileHandler->read($refName, $ext, $major);
+            if (!$temp) {
+                if (json_last_error() == JSON_ERROR_NONE) {
+                    // missing files are optional until all extensions are fully documented
+                    continue;
+                }
+                $error = sprintf('Cannot decode file %s%s.%s.json', $refName, $major, $ext);
+                throw new \RuntimeException($error);
+            }
+            $data = array_merge($data, $temp);
+        }
+        return $data;
+    }
+
+    private function getMajorReleaseDefinition(string $refName, string $ext): array
+    {
+        static $majorReleases = array(
             'core' => array(
                 'const'      => array('80'),
                 'classes'    => array('4', '5', '7', '71', '73', '74', '80'),
@@ -595,27 +603,12 @@ class InitHandler implements CommandHandlerInterface
             if (array_key_exists($ext, $iterations)) {
                 $iterations = $iterations[$ext];
             } else {
-                $iterations = array('');
+                $iterations = [''];
             }
         } else {
-            $iterations = array('');
+            $iterations = [''];
         }
 
-        $data = array();
-
-        foreach ($iterations as $major) {
-            $temp = $this->jsonFileHandler->read($refName, $ext, $major);
-            if (!$temp) {
-                if (json_last_error() == JSON_ERROR_NONE) {
-                    // missing files are optional until all extensions are fully documented
-                    continue;
-                } else {
-                    $error = sprintf('Cannot decode file %s%s.%s.json', $refName, $major, $ext);
-                }
-                throw new \RuntimeException($error);
-            }
-            $data = array_merge($data, $temp);
-        }
-        return $data;
+        return $iterations;
     }
 }

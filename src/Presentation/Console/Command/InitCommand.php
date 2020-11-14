@@ -35,7 +35,6 @@ class InitCommand extends AbstractCommand implements CommandInterface
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $initCommand = new AppInitCommand();
-        $initCommand->extension = '';
         $initCommand->refDir = $this->getApplication()->getRefDir();
         $initCommand->dbFilename = $this->getApplication()->getDbFilename();
 
