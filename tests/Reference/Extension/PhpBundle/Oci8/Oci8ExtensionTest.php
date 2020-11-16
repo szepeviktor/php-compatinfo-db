@@ -15,9 +15,9 @@ declare(strict_types=1);
  * @since      Class available since Release 2.15.0 of PHP_CompatInfo_Db
  */
 
-namespace Bartlett\Tests\CompatInfoDb\Reference\Extension\PhpBundle\Oci8;
+namespace Bartlett\CompatInfoDb\Tests\Reference\Extension\PhpBundle\Oci8;
 
-use Bartlett\Tests\CompatInfoDb\Reference\GenericTest;
+use Bartlett\CompatInfoDb\Tests\Reference\GenericTest;
 
 /**
  * Tests for PHP_CompatInfo, retrieving components informations

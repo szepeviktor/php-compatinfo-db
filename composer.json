@@ -22,6 +22,7 @@
         "ext-pcre": "*",
         "ext-pdo": "*",
         "ext-pdo_sqlite": "*",
+        "ext-simplexml": "*",
         "ext-spl": "*",
         "ext-sqlite3": "*",
         "ext-xsl": "*",
@@ -30,6 +31,7 @@
         "composer/semver": "^1.0|^2.0|^3.0",
         "league/tactician": "^1.0",
         "league/tactician-container": "^2.0",
+        "symfony/cache": "^4.4|^5.0",
         "symfony/config": "^4.4|^5.0",
         "symfony/console": "^4.4|^5.0",
         "symfony/dependency-injection": "^4.4|^5.0",
@@ -59,7 +61,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Bartlett\\Tests\\CompatInfoDb\\": "tests/"
+            "Bartlett\\CompatInfoDb\\Tests\\": "tests/"
         }
     },
     "config": {

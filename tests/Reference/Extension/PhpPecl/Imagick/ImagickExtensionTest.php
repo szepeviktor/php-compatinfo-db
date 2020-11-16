@@ -18,9 +18,9 @@ declare(strict_types=1);
  * @since      Class available since Release 1.0.0alpha1 of PHP_CompatInfo_Db
  */
 
-namespace Bartlett\Tests\CompatInfoDb\Reference\Extension\PhpPecl\Imagick;
+namespace Bartlett\CompatInfoDb\Tests\Reference\Extension\PhpPecl\Imagick;
 
-use Bartlett\Tests\CompatInfoDb\Reference\GenericTest;
+use Bartlett\CompatInfoDb\Tests\Reference\GenericTest;
 
 /**
  * Tests for PHP_CompatInfo, retrieving components informations

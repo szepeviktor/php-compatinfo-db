@@ -17,9 +17,9 @@ declare(strict_types=1);
  * @since      Class available since Release 1.37.0 of PHP_CompatInfo_Db
  */
 
-namespace Bartlett\Tests\CompatInfoDb\Reference\Extension\PhpPecl\Raphf;
+namespace Bartlett\CompatInfoDb\Tests\Reference\Extension\PhpPecl\Raphf;
 
-use Bartlett\Tests\CompatInfoDb\Reference\GenericTest;
+use Bartlett\CompatInfoDb\Tests\Reference\GenericTest;
 
 /**
  * Tests for PHP_CompatInfo, retrieving components informations
