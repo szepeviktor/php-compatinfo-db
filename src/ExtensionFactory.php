@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace Bartlett\CompatInfoDb;
 
+use Bartlett\CompatInfoDb\Domain\Factory\ExtensionVersionProviderInterface;
+
 /**
  * Extension factory to build a concrete Reference instance with all releases,
  * independent from the platform.
@@ -26,20 +28,8 @@ namespace Bartlett\CompatInfoDb;
  * @since    Class available since Release 4.0.0-alpha2 of PHP_CompatInfo
  * @since    Class available since Release 1.0.0alpha1 of PHP_CompatInfo_Db
  */
-class ExtensionFactory implements ReferenceInterface
+class ExtensionFactory implements ReferenceInterface, ExtensionVersionProviderInterface
 {
-    const LATEST_PHP_5_2 = '5.2.17';
-    const LATEST_PHP_5_3 = '5.3.29';
-    const LATEST_PHP_5_4 = '5.4.45';
-    const LATEST_PHP_5_5 = '5.5.38';
-    const LATEST_PHP_5_6 = '5.6.40';
-    const LATEST_PHP_7_0 = '7.0.33';
-    const LATEST_PHP_7_1 = '7.1.33';
-    const LATEST_PHP_7_2 = '7.2.34';
-    const LATEST_PHP_7_3 = '7.3.24';
-    const LATEST_PHP_7_4 = '7.4.12';
-    const LATEST_PHP_8_0 = '8.0.0rc3';
-
     protected $storage;
 
     private $name;

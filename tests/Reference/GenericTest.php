@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
+
 /**
- * Unit tests for PHP_CompatInfo, Generic extension base class.
+ * Unit tests for PHP_CompatInfo_Db, Generic extension base class.
  *
  * PHP version 7
  *
@@ -13,8 +14,10 @@
  * @link       http://bartlett.laurent-laville.org/php-compatinfo/
  */
 
-namespace Bartlett\Tests\CompatInfoDb\Reference;
+namespace Bartlett\CompatInfoDb\Tests\Reference;
 
+use Bartlett\CompatInfoDb\Domain\Factory\ExtensionVersionProviderInterface;
+use Bartlett\CompatInfoDb\Domain\Factory\ExtensionVersionProviderTrait;
 use Bartlett\CompatInfoDb\Domain\Factory\LibraryVersionProviderTrait;
 use Bartlett\CompatInfoDb\ExtensionFactory;
 use Bartlett\CompatInfoDb\ReferenceInterface;
@@ -35,7 +38,7 @@ use function interface_exists;
  * @since Release 3.0.0RC1 of PHP_CompatInfo
  * @since Release 1.0.0alpha1 of PHP_CompatInfo_Db
  */
-abstract class GenericTest extends TestCase
+abstract class GenericTest extends TestCase implements ExtensionVersionProviderInterface
 {
     protected static $obj = null;
 
@@ -58,6 +61,7 @@ abstract class GenericTest extends TestCase
     protected static $ignoredconsts        = [];
 
     use LibraryVersionProviderTrait;
+    use ExtensionVersionProviderTrait;
 
     /**
      * Sets up the shared fixture.
@@ -134,7 +138,7 @@ abstract class GenericTest extends TestCase
      */
     private function provideReferenceValues(array $elements, string $opt)
     {
-        $extVersion = $this->getExtensionVersion();
+        $extVersion = $this->getExtensionVersion(self::$obj->getName());
 
         foreach ($elements as $name => $range) {
             $range['ext.min'] = $extVersion;
@@ -239,7 +243,7 @@ abstract class GenericTest extends TestCase
             }
         }
 
-        $extVersion = $this->getExtensionVersion();
+        $extVersion = $this->getExtensionVersion(self::$obj->getName());
 
         if (!empty($min)) {
             $shouldBeThere = version_compare(PHP_VERSION, $min, 'ge');
@@ -965,46 +969,5 @@ abstract class GenericTest extends TestCase
             $name = 'zend opcache';
         }
         return new ReflectionExtension($name);
-    }
-
-    /**
-     * Hack(s) for compatibility reason in extension version test (see checkValuesFromReference)
-     *
-     * @return string
-     */
-    private function getExtensionVersion(): string
-    {
-        if ('enchant' === self::$obj->getName()) {
-            if (version_compare(PHP_VERSION, '7.0.26RC1')) {
-                // @see https://github.com/php/php-src/commit/fb0902143291c8b605997a6b2a8f8717289a44d1
-                return '1.1.0';
-            }
-        } elseif ('fileinfo' === self::$obj->getName()) {
-            if (version_compare(PHP_VERSION, '7.3.0alpha2')) {
-                // @see https://github.com/php/php-src/commit/d6ccaef3e683976e6141b90ee1e315113f4a7baa
-                return '1.0.5';
-            }
-        } elseif ('hash' === self::$obj->getName()) {
-            if (version_compare(PHP_VERSION, '7.3.0alpha3', 'lt')) {
-                // @see https://github.com/php/php-src/commit/3f96f01e9e4d50f47aa89da03853201304a58bba
-                return '1.0';
-            }
-        } elseif ('intl' === self::$obj->getName()) {
-            if (version_compare(PHP_VERSION, '7.3.0alpha2')) {
-                // @see https://github.com/php/php-src/commit/b1767d8a5625d7347e500e1230cf6c6c66d111ad
-                return '1.1.0';
-            }
-        } elseif ('json' === self::$obj->getName()) {
-            if (version_compare(PHP_VERSION, '7.4.0beta2')) {
-                // @see https://github.com/php/php-src/commit/dee243d475b088189862d30755aac7bb9cdd61b3
-                return '1.6.0';
-            }
-        } elseif ('snmp' === self::$obj->getName()) {
-            if (version_compare(PHP_VERSION, '7.3.0alpha2')) {
-                // @see https://github.com/php/php-src/commit/70f41d1d9cb03f76f73e7a6099bfc7ce0c2b2701
-                return '0.1';
-            }
-        }
-        return self::$obj->getCurrentVersion();
     }
 }
