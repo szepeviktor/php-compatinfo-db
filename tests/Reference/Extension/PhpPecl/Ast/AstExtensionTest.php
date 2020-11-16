@@ -1,9 +1,7 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 /**
- * Unit tests for PHP_CompatInfo, ast extension Reference
+ * Unit tests for PHP_CompatInfo_Db, ast extension Reference
  *
  * PHP version 7
  *
@@ -12,8 +10,7 @@ declare(strict_types=1);
  * @subpackage Tests
  * @author     Laurent Laville <pear@laurent-laville.org>
  * @license    https://opensource.org/licenses/BSD-3-Clause The 3-Clause BSD License
- * @link       http://php5.laurent-laville.org/compatinfo/
- * @since      Class available since Release 1.24.0 of PHP_CompatInfo_Db
+ * @link       http://bartlett.laurent-laville.org/php-compatinfo/
  */
 
 namespace Bartlett\CompatInfoDb\Tests\Reference\Extension\PhpPecl\Ast;
@@ -21,15 +18,7 @@ namespace Bartlett\CompatInfoDb\Tests\Reference\Extension\PhpPecl\Ast;
 use Bartlett\CompatInfoDb\Tests\Reference\GenericTest;
 
 /**
- * Tests for PHP_CompatInfo, retrieving components informations
- * about ast extension
- *
- * @category   PHP
- * @package    PHP_CompatInfo_Db
- * @subpackage Tests
- * @author     Laurent Laville <pear@laurent-laville.org>
- * @license    https://opensource.org/licenses/BSD-3-Clause The 3-Clause BSD License
- * @link       http://php5.laurent-laville.org/compatinfo/
+ * @since Release 1.24.0
  */
 class AstExtensionTest extends GenericTest
 {
