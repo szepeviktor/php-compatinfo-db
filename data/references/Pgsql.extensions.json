@@ -1,4 +1,5 @@
 {
     "id": 57,
-    "name": "pgsql"
+    "name": "pgsql",
+    "type": "bundle"
 }

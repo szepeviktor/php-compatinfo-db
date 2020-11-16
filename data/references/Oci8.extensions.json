@@ -1,4 +1,5 @@
 {
     "id": 108,
-    "name": "oci8"
+    "name": "oci8",
+    "type": "bundle"
 }

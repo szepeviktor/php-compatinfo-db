@@ -1,4 +1,5 @@
 {
     "id": 73,
-    "name": "sphinx"
+    "name": "sphinx",
+    "type": "pecl"
 }

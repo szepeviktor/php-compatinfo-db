@@ -1,4 +1,5 @@
 {
     "id": 96,
-    "name": "xmlwriter"
+    "name": "xmlwriter",
+    "type": "bundle"
 }

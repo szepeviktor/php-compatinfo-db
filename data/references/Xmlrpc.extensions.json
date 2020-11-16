@@ -1,4 +1,5 @@
 {
     "id": 95,
-    "name": "xmlrpc"
+    "name": "xmlrpc",
+    "type": "pecl"
 }

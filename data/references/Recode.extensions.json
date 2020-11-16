@@ -1,4 +1,5 @@
 {
     "id": 63,
-    "name": "recode"
+    "name": "recode",
+    "type": "pecl"
 }

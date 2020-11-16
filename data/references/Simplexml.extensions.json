@@ -1,4 +1,5 @@
 {
     "id": 68,
-    "name": "SimpleXML"
+    "name": "SimpleXML",
+    "type": "bundle"
 }

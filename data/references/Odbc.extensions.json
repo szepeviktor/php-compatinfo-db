@@ -1,4 +1,5 @@
 {
     "id": 51,
-    "name": "odbc"
+    "name": "odbc",
+    "type": "bundle"
 }

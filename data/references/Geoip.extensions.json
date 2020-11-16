@@ -1,4 +1,5 @@
 {
     "id": 20,
-    "name": "geoip"
+    "name": "geoip",
+    "type": "pecl"
 }

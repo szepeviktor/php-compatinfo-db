@@ -1,4 +1,5 @@
 {
     "id": 15,
-    "name": "fileinfo"
+    "name": "fileinfo",
+    "type": "bundle"
 }

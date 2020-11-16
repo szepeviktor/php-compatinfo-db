@@ -348,7 +348,7 @@ class ReferenceCollection
         );
         $this->dbal->exec(
             'CREATE TABLE IF NOT EXISTS ' . $tblExtensions .
-            ' (id INTEGER, name VARCHAR(32),' .
+            ' (id INTEGER, name VARCHAR(32), type VARCHAR(16),' .
             ' PRIMARY KEY (id))'
         );
         $this->dbal->exec(
@@ -438,8 +438,8 @@ class ReferenceCollection
         );
         $this->stmtExtensions = $this->dbal->prepare(
             'INSERT INTO ' . $tblExtensions .
-            ' (id, name)' .
-            ' VALUES (:id, :name)'
+            ' (id, name, type)' .
+            ' VALUES (:id, :name, :type)'
         );
         $this->stmtReleases = $this->dbal->prepare(
             'REPLACE INTO ' . $tblReleases .

@@ -1,4 +1,5 @@
 {
     "id": 33,
-    "name": "jsmin"
+    "name": "jsmin",
+    "type": "pecl"
 }

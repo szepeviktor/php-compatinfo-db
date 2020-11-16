@@ -1,4 +1,5 @@
 {
     "id": 75,
-    "name": "sqlite3"
+    "name": "sqlite3",
+    "type": "bundle"
 }

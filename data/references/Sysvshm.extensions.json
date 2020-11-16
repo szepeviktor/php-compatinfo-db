@@ -1,4 +1,5 @@
 {
     "id": 84,
-    "name": "sysvshm"
+    "name": "sysvshm",
+    "type": "bundle"
 }

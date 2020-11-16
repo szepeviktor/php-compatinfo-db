@@ -1,4 +1,5 @@
 {
     "id": 2,
-    "name": "apc"
+    "name": "apc",
+    "type": "pecl"
 }

@@ -1,4 +1,5 @@
 {
     "id": 16,
-    "name": "filter"
+    "name": "filter",
+    "type": "bundle"
 }

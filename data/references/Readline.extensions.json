@@ -1,4 +1,5 @@
 {
     "id": 62,
-    "name": "readline"
+    "name": "readline",
+    "type": "bundle"
 }

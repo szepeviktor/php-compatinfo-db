@@ -1,4 +1,5 @@
 {
     "id": 100,
-    "name": "OPcache"
+    "name": "OPcache",
+    "type": "bundle"
 }

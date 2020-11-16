@@ -1,4 +1,5 @@
 {
     "id": 80,
-    "name": "svn"
+    "name": "svn",
+    "type": "pecl"
 }

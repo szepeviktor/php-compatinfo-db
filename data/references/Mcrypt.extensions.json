@@ -1,4 +1,5 @@
 {
     "id": 41,
-    "name": "mcrypt"
+    "name": "mcrypt",
+    "type": "pecl"
 }

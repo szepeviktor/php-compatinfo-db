@@ -1,4 +1,5 @@
 {
     "id": 66,
-    "name": "session"
+    "name": "session",
+    "type": "bundle"
 }

@@ -1,4 +1,5 @@
 {
     "id": 86,
-    "name": "tokenizer"
+    "name": "tokenizer",
+    "type": "bundle"
 }

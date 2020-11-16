@@ -1,4 +1,5 @@
 {
     "id": 8,
-    "name": "ctype"
+    "name": "ctype",
+    "type": "bundle"
 }

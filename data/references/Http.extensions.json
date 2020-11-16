@@ -1,4 +1,5 @@
 {
     "id": 26,
-    "name": "http"
+    "name": "http",
+    "type": "pecl"
 }

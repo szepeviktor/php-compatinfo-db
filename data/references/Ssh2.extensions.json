@@ -1,4 +1,5 @@
 {
     "id": 77,
-    "name": "ssh2"
+    "name": "ssh2",
+    "type": "pecl"
 }

@@ -1,4 +1,5 @@
 {
     "id": 92,
-    "name": "xhprof"
+    "name": "xhprof",
+    "type": "pecl"
 }

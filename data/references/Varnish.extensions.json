@@ -1,4 +1,5 @@
 {
     "id": 88,
-    "name": "varnish"
+    "name": "varnish",
+    "type": "pecl"
 }

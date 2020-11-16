@@ -1,4 +1,5 @@
 {
     "id": 87,
-    "name": "uploadprogress"
+    "name": "uploadprogress",
+    "type": "pecl"
 }

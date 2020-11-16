@@ -1,4 +1,5 @@
 {
     "id": 104,
-    "name": "redis"
+    "name": "redis",
+    "type": "pecl"
 }

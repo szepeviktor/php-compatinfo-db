@@ -1,4 +1,5 @@
 {
     "id": 76,
-    "name": "sqlite"
+    "name": "sqlite",
+    "type": "pecl"
 }

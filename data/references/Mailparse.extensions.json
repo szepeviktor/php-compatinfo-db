@@ -1,4 +1,5 @@
 {
     "id": 39,
-    "name": "mailparse"
+    "name": "mailparse",
+    "type": "pecl"
 }

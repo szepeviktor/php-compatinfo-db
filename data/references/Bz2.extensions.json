@@ -1,4 +1,5 @@
 {
     "id": 5,
-    "name": "bz2"
+    "name": "bz2",
+    "type": "bundle"
 }

@@ -1,4 +1,5 @@
 {
     "id": 43,
-    "name": "memcache"
+    "name": "memcache",
+    "type": "pecl"
 }

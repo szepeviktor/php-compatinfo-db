@@ -1,4 +1,5 @@
 {
     "id": 27,
-    "name": "iconv"
+    "name": "iconv",
+    "type": "bundle"
 }

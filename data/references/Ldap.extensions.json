@@ -1,4 +1,5 @@
 {
     "id": 35,
-    "name": "ldap"
+    "name": "ldap",
+    "type": "bundle"
 }
