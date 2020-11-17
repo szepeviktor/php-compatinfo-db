@@ -4,7 +4,6 @@ Thumbs.db
 *.phar
 *.log
 vendor/
-phpunit.xml
 tests/reports/
 composer.lock
 .idea/
