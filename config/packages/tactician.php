@@ -6,10 +6,8 @@ use Bartlett\CompatInfoDb\Application\Command\InitCommand;
 use Bartlett\CompatInfoDb\Application\Command\InitHandler;
 use Bartlett\CompatInfoDb\Application\Command\ListCommand;
 use Bartlett\CompatInfoDb\Application\Command\ListHandler;
-use Bartlett\CompatInfoDb\Application\Command\PublishCommand;
-use Bartlett\CompatInfoDb\Application\Command\PublishHandler;
-use Bartlett\CompatInfoDb\Application\Command\ReleaseCommand;
-use Bartlett\CompatInfoDb\Application\Command\ReleaseHandler;
+use Bartlett\CompatInfoDb\Application\Command\Release\ReleaseCommand;
+use Bartlett\CompatInfoDb\Application\Command\Release\ReleaseHandler;
 use Bartlett\CompatInfoDb\Application\Command\ShowCommand;
 use Bartlett\CompatInfoDb\Application\Command\ShowHandler;
 
@@ -47,10 +45,6 @@ return static function (ContainerConfigurator $containerConfigurator): void
         // for ContainerLocator of https://github.com/thephpleague/tactician-container
         ->public()
     ;
-    $services->set(PublishHandler::class)
-        // for ContainerLocator of https://github.com/thephpleague/tactician-container
-        ->public()
-    ;
     $services->set(ReleaseHandler::class)
         // for ContainerLocator of https://github.com/thephpleague/tactician-container
         ->public()
@@ -66,7 +60,6 @@ return static function (ContainerConfigurator $containerConfigurator): void
             DiagnoseCommand::class => DiagnoseHandler::class,
             InitCommand::class => InitHandler::class,
             ListCommand::class => ListHandler::class,
-            PublishCommand::class => PublishHandler::class,
             ReleaseCommand::class => ReleaseHandler::class,
             ShowCommand::class => ShowHandler::class,
         ])

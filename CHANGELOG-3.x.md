@@ -15,6 +15,7 @@ using the [Keep a CHANGELOG](http://keepachangelog.com) principles.
 
 ### Changed
 
+- new `bartlett:db:release` command combines old `bartlett:db:release:php` and `bartlett:db:publish:php` commands that were removed
 - [#50](https://github.com/llaville/php-compatinfo-db/issues/50) Dependency-Injection with Symfony component
 replace old `ContainerService` that was introduced in version 2.13
 - [#54](https://github.com/llaville/php-compatinfo-db/issues/54) update Sqlite3 reference to support PHP 8.0
