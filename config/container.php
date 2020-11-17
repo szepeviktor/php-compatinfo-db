@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
 $containerBuilder = new ContainerBuilder();
-$loader = new PhpFileLoader($containerBuilder, new FileLocator(__DIR__ . '/set'));
+$loader = new PhpFileLoader($containerBuilder, new FileLocator('config/set'));
 $loader->load('default.php');
 
 $containerBuilder->compile();

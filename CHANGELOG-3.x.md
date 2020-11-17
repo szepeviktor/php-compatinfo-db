@@ -12,6 +12,7 @@ using the [Keep a CHANGELOG](http://keepachangelog.com) principles.
 - PHP 7.4.12 support
 - [#49](https://github.com/llaville/php-compatinfo-db/issues/49) PHP 8.0 support
 - [#52](https://github.com/llaville/php-compatinfo-db/issues/52) Configuration - read it from a compatible PSR11 container
+- [#59](https://github.com/llaville/php-compatinfo-db/issues/59) Phar distribution automated create/update with composer
 
 ### Changed
 

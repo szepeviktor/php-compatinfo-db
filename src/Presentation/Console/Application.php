@@ -59,6 +59,10 @@ class Application extends SymfonyApplication implements ApplicationInterface
     protected function getDefaultInputDefinition(): InputDefinition
     {
         $definition = parent::getDefaultInputDefinition();
+        if (\Phar::running()) {
+            // handle external configuration files is not allowed with PHAR distribution
+            return $definition;
+        }
         $definition->addOption(
             new InputOption(
                 'config',

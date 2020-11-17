@@ -2,16 +2,20 @@
 <?php
 // @link https://www.tomasvotruba.cz/blog/2018/08/02/5-gotchas-of-the-bin-file-in-php-cli-applications/
 
-declare(strict_types=1);
-
 gc_disable(); // performance boost
 
-$possibleAutoloadPaths = [
-    // local dev repository
-    __DIR__ . '/../vendor/autoload.php',
-    // dependency
-    __DIR__ . '/../../../../vendor/autoload.php',
-];
+if (\Phar::running()) {
+    $possibleAutoloadPaths = [
+        'phar://compatinfo-db.phar/vendor/autoload.php'
+    ];
+} else {
+    $possibleAutoloadPaths = [
+        // local dev repository
+        __DIR__ . '/../vendor/autoload.php',
+        // dependency
+        __DIR__ . '/../../../../vendor/autoload.php',
+    ];
+}
 
 $isAutoloadFound = false;
 foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {

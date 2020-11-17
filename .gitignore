@@ -8,3 +8,5 @@ tests/reports/
 composer.lock
 .idea/
 .git-semver/
+tools/
+.phive/
