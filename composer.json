@@ -38,6 +38,7 @@
         "symfony/requirements-checker": "^2.0"
     },
     "require-dev": {
+        "humbug/box": "^3.9",
         "psr/log": "^1.0",
         "symfony/phpunit-bridge": "^5.1"
     },
@@ -64,6 +65,20 @@
             "Bartlett\\CompatInfoDb\\Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "compile-box": "box compile",
+        "post-install-cmd": [
+            "@compile-box"
+        ],
+        "post-update-cmd": [
+            "@compile-box"
+        ]
+    },
+    "scripts-descriptions": {
+        "install-box": "Install box-project/box to build PHAR version of application"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "sort-packages": true,
         "optimize-autoloader": true
